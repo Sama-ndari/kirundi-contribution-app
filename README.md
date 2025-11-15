@@ -28,7 +28,10 @@ The **Ijwi ry'Ikirundi AI Contribution Hub** helps crowdsource Kirundi language 
 - Duplicate checking against existing database
 - Downloads as `French_To_Kirundi.csv`
 
-### ✍🏾 Hard Level: Coming Soon ...
+### ✍🏾 Hard Level: Add New Sentences
+- Create original Kirundi-French sentence pairs
+- Input validation (minimum 4 words)
+- Downloads as `my_new_sentences.csv`
 
 
 **All levels include:**

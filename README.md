@@ -22,16 +22,21 @@ The **Ijwi ry'Ikirundi AI Contribution Hub** helps crowdsource Kirundi language 
 - Live data from Hugging Face dataset
 - Progress tracking with localStorage
 - Downloads as `Kirundi_To_French.csv`
+- **Report/correct Kirundi phrases:** Users can flag and suggest corrections for Kirundi sentences
+- Error and completion messages are always mutually exclusive (never both visible)
+- All error messages default to English
 
 ### 🔄 Medium Level: French to Kirundi Translation  
 - Translate French sentences to Kirundi
 - Duplicate checking against existing database
 - Downloads as `French_To_Kirundi.csv`
+- Error and completion messages are always mutually exclusive
 
 ### ✍🏾 Hard Level: Add New Sentences
 - Create original Kirundi-French sentence pairs
 - Input validation (minimum 4 words)
 - Downloads as `my_new_sentences.csv`
+- Error and completion messages are always mutually exclusive
 
 
 **All levels include:**
@@ -63,15 +68,35 @@ python -m http.server 8000
 ## 💾 Data Format
 
 All CSV files use standardized headers:
+
+#### Easy Level (Kirundi → French)
+```csv
+Original_Kirundi,Corrected_Kirundi,French_Translation
+"Muraho, amakuru?","Muraho, amakuru?","Bonjour, comment allez-vous?"
+```
+#### Medium Level (French → Kirundi)
 ```csv
 Kirundi_Transcription,French_Translation
 "Muraho, amakuru?","Bonjour, comment allez-vous?"
+```
+#### Hard Level (New Sentences)
+```csv
+Kirundi_Transcription,French_Translation
+"Ndagukunda cane.","Je t'aime beaucoup."
 ```
 
 ## 🫱🏽‍🫲🏿 Contributing
 
 **Contact**: 📱 WhatsApp +257 77 568 903  
 **Team**: Ijwi Ry'Ikirundi AI Team
+
+## ❓ Troubleshooting & FAQ
+
+- **Q: Why do I see both an error and a congratulations/completion message at the same time?**
+  - A: This should never happen. The app now ensures only one is visible at a time. If you see both, try a hard refresh (Ctrl+Shift+R) or clear your browser cache.
+
+- **Q: How can I report a problem with a Kirundi phrase?**
+  - A: In Easy Level, click the "Report a problem" button below the Kirundi phrase to submit a correction or flag an issue.
 
 ### 📞 Support
 For questions, feedback, or technical support:

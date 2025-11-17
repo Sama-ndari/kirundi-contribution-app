@@ -18,6 +18,7 @@ The **Ijwi ry'Ikirundi AI Contribution Hub** helps crowdsource Kirundi language 
 ## ✨ Features
 
 ### 🎯 Easy Level: Kirundi to French Translation
+
 - Translate existing Kirundi phrases to French
 - Live data from Hugging Face dataset
 - Progress tracking with localStorage
@@ -26,39 +27,43 @@ The **Ijwi ry'Ikirundi AI Contribution Hub** helps crowdsource Kirundi language 
 - Error and completion messages are always mutually exclusive (never both visible)
 - All error messages default to English
 
-### 🔄 Medium Level: French to Kirundi Translation  
+### 🔄 Medium Level: French to Kirundi Translation
+
 - Translate French sentences to Kirundi
 - Duplicate checking against existing database
 - Downloads as `French_To_Kirundi.csv`
 - Error and completion messages are always mutually exclusive
 
 ### ✍🏾 Hard Level: Add New Sentences
-- Create original Kirundi-French sentence pairs
-- Input validation (minimum 4 words)
-- Downloads as `my_new_sentences.csv`
-- Error and completion messages are always mutually exclusive
 
+- Create original Kirundi-French sentence pairs
+- Input validation (both fields required, minimum 4 words recommended)
+- Duplicate checking: prevents submission of Kirundi sentences already in the database
 
 **All levels include:**
+
 - Keyboard shortcuts (Ctrl+Enter to submit, Escape to skip)
 - WhatsApp sharing integration (+257 77 568 903)
 - Mobile-responsive design
+- Language toggle button (FR/EN) for all instructions and feedback
 
 ## 🚀 Quick Start
 
 ### Option 1: Direct Use
+
 1. Open `index.html` in your browser
 2. Choose your contribution level
 3. Follow on-screen instructions
 
 ### Option 2: Local Server (Recommended)
+
 ```bash
 cd Kirundi_Game
 python -m http.server 8000
 # Visit: http://localhost:8000
 ```
 
-## 🔧 Technical Details
+## 🛠 Technical Details
 
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
 - **Data Source**: Live data from Hugging Face
@@ -70,20 +75,27 @@ python -m http.server 8000
 All CSV files use standardized headers:
 
 #### Easy Level (Kirundi → French)
+
 ```csv
 Original_Kirundi,Corrected_Kirundi,French_Translation
 "Muraho, amakuru?","Muraho, amakuru?","Bonjour, comment allez-vous?"
 ```
+
 #### Medium Level (French → Kirundi)
-```csv
-Kirundi_Transcription,French_Translation
-"Muraho, amakuru?","Bonjour, comment allez-vous?"
-```
-#### Hard Level (New Sentences)
+
 ```csv
 Kirundi_Transcription,French_Translation
 "Ndagukunda cane.","Je t'aime beaucoup."
 ```
+
+#### Hard Level (New Sentences)
+
+```csv
+Kirundi_Transcription,French_Translation
+"Ndagukunda cane.","Je t'aime beaucoup."
+```
+
+All downloads and submissions use these formats to ensure compatibility with the central dataset.
 
 ## 🫱🏽‍🫲🏿 Contributing
 
@@ -93,13 +105,16 @@ Kirundi_Transcription,French_Translation
 ## ❓ Troubleshooting & FAQ
 
 - **Q: Why do I see both an error and a congratulations/completion message at the same time?**
+
   - A: This should never happen. The app now ensures only one is visible at a time. If you see both, try a hard refresh (Ctrl+Shift+R) or clear your browser cache.
 
 - **Q: How can I report a problem with a Kirundi phrase?**
   - A: In Easy Level, click the "Report a problem" button below the Kirundi phrase to submit a correction or flag an issue.
 
 ### 📞 Support
+
 For questions, feedback, or technical support:
+
 - 💬 **WhatsApp**: [+257 77 568 903](https://wa.me/25777568903)
 - 📧 **Email**: Junior_julescesar10@hotmail.com
 

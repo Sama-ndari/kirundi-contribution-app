@@ -1,553 +1,986 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ijwi ry'Ikirundi AI: Contribution Hub</title>
-    
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-green-50 min-h-screen">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-green-50 min-h-screen">
     <!-- Header -->
     <header class="relative overflow-hidden">
-        <!-- Burundian Flag Gradient Background -->
-        <div class="absolute inset-0 bg-gradient-to-r from-red-600 via-white to-green-600 opacity-10"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-red-50"></div>
-        
-        <!-- Main Header Content -->
-        <div class="relative bg-white/95 backdrop-blur-sm shadow-2xl border-b-4 border-gradient">
-            <div class="container mx-auto px-4 py-6 md:py-8">
-                <!-- Language Toggle Button -->
-                <div class="absolute top-4 right-4">
-                    <button id="language-toggle" onclick="toggleLanguage()" 
-                            class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2 shadow-lg">
-                        <span id="language-flag">🇫🇷</span>
-                        <span id="language-text">FR</span>
-                    </button>
-                </div>
-                
-                <!-- Logo and Title Section -->
-                <div class="flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-6 mb-4">
-                    <!-- Logo -->
-                    <div class="flex-shrink-0">
-                        <img src="icon.png" alt="Ijwi ry'Ikirundi AI Logo" 
-                             class="w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg ring-3 ring-green-500/30 hover:ring-green-500/50 transition-all duration-300 transform hover:scale-105">
-                    </div>
-                    
-                    <!-- Title and Subtitle -->
-                    <div class="text-center md:text-left">
-                        <h1 class="font-poppins text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-green-600 via-red-600 to-green-700 bg-clip-text text-transparent leading-tight">
-                            Ijwi ry'Ikirundi AI
-                        </h1>
-                        <div id="subtitle" class="font-poppins text-base md:text-lg font-semibold text-gray-700 mt-1">
-                            Contribution Hub
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Mission Statement -->
-                <div class="text-center max-w-3xl mx-auto">
-                    <p id="mission-text" class="font-inter text-base md:text-lg text-gray-700 leading-relaxed mb-3">
-                        Help us build the future of 
-                        <span class="font-semibold text-green-700">Kirundi language AI</span> 
-                        through community collaboration
-                    </p>
-                    <div class="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-600">
-                        <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                        <span id="preserving-text" class="font-medium">Preserving Heritage</span>
-                        <span class="w-1.5 h-1.5 bg-white border-2 border-gray-400 rounded-full"></span>
-                        <span id="building-text" class="font-medium">Building Future</span>
-                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                        <span id="empowering-text" class="font-medium">Empowering Community</span>
-                    </div>
-                </div>
+      <!-- Burundian Flag Gradient Background -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-red-600 via-white to-green-600 opacity-10"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-red-50"
+      ></div>
+
+      <!-- Main Header Content -->
+      <div
+        class="relative bg-white/95 backdrop-blur-sm shadow-2xl border-b-4 border-gradient"
+      >
+        <div class="container mx-auto px-4 py-6 md:py-8">
+          <!-- Language Toggle Button -->
+          <div class="absolute top-4 right-4">
+            <button
+              id="language-toggle"
+              onclick="toggleLanguage()"
+              class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2 shadow-lg"
+            >
+              <span id="language-flag">🇫🇷</span>
+              <span id="language-text">FR</span>
+            </button>
+          </div>
+
+          <!-- Logo and Title Section -->
+          <div
+            class="flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-6 mb-4"
+          >
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+              <img
+                src="icon.png"
+                alt="Ijwi ry'Ikirundi AI Logo"
+                class="w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg ring-3 ring-green-500/30 hover:ring-green-500/50 transition-all duration-300 transform hover:scale-105"
+              />
             </div>
+
+            <!-- Title and Subtitle -->
+            <div class="text-center md:text-left">
+              <h1
+                class="font-poppins text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-green-600 via-red-600 to-green-700 bg-clip-text text-transparent leading-tight"
+              >
+                Ijwi ry'Ikirundi AI
+              </h1>
+              <div
+                id="subtitle"
+                class="font-poppins text-base md:text-lg font-semibold text-gray-700 mt-1"
+              >
+                Contribution Hub
+              </div>
+            </div>
+          </div>
+
+          <!-- Mission Statement -->
+          <div class="text-center max-w-3xl mx-auto">
+            <p
+              id="mission-text"
+              class="font-inter text-base md:text-lg text-gray-700 leading-relaxed mb-3"
+            >
+              Help us build the future of
+              <span class="font-semibold text-green-700"
+                >Kirundi language AI</span
+              >
+              through community collaboration
+            </p>
+            <div
+              class="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-600"
+            >
+              <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+              <span id="preserving-text" class="font-medium"
+                >Preserving Heritage</span
+              >
+              <span
+                class="w-1.5 h-1.5 bg-white border-2 border-gray-400 rounded-full"
+              ></span>
+              <span id="building-text" class="font-medium"
+                >Building Future</span
+              >
+              <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+              <span id="empowering-text" class="font-medium"
+                >Empowering Community</span
+              >
+            </div>
+          </div>
         </div>
-        
-        <!-- Decorative Bottom Border -->
-        <div class="h-1 bg-gradient-to-r from-red-500 via-white to-green-500"></div>
+      </div>
+
+      <!-- Decorative Bottom Border -->
+      <div
+        class="h-1 bg-gradient-to-r from-red-500 via-white to-green-500"
+      ></div>
     </header>
+    <!-- Support / Chat Popup Button and Modal -->
+    <button
+      id="support-chat-btn"
+      class="fixed z-40 bottom-6 right-6 bg-red-600 hover:bg-green-700 text-white rounded-full shadow-lg p-3 opacity-80 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
+      aria-label="Chat Support"
+    >
+      <svg
+        class="w-5 h-5 text-white-500"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 8.63 19.86 19.86 0 0 1 0 2.18 2 2 0 0 1 2 0h3a2 2 0 0 1 2 1.72c.13.81.35 1.6.67 2.35a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.54 2.35.67A2 2 0 0 1 22 16.92z"
+        />
+      </svg>
+      <span class="hidden md:inline font-semibold" data-translate="supportBtn"
+        >Support</span
+      >
+    </button>
+    <div
+      id="support-chat-modal"
+      class="fixed z-50 bottom-24 right-6 max-w-xs w-full bg-white rounded-2xl shadow-2xl border border-green-100 p-5 flex flex-col items-center gap-4 hidden animate-fade-in"
+    >
+      <div class="flex items-center gap-2 mb-1">
+        <svg
+          class="w-6 h-6 text-green-500"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M16.72 12.06a4.25 4.25 0 01-2.66 2.66c-.43.18-.89.28-1.36.28a4.25 4.25 0 01-4.25-4.25c0-.47.1-.93.28-1.36a4.25 4.25 0 012.66-2.66c.43-.18.89-.28 1.36-.28a4.25 4.25 0 014.25 4.25c0 .47-.1.93-.28 1.36z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 19.25c-4.01 0-7.25-3.24-7.25-7.25S7.99 4.75 12 4.75s7.25 3.24 7.25 7.25-3.24 7.25-7.25 7.25z"
+          />
+        </svg>
+        <h2
+          class="font-poppins text-lg font-bold text-green-700"
+          data-translate="needHelp"
+        >
+          Need Help?
+        </h2>
+      </div>
+      <p
+        class="font-inter text-gray-700 text-center text-sm"
+        data-translate="supportDesc"
+      >
+        For questions, feedback, or technical support, reach out anytime:
+      </p>
+      <div class="flex flex-col gap-2 w-full">
+        <a
+          href="https://wa.me/25777568903"
+          target="_blank"
+          class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-colors justify-center"
+          data-translate="whatsappBtn"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.18 1.6 6.02L0 24l6.19-1.62A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52zM12 22c-1.84 0-3.62-.5-5.16-1.44l-.37-.22-3.68.97.98-3.59-.24-.37A9.93 9.93 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.07-7.75c-.28-.14-1.65-.82-1.91-.91-.26-.1-.45-.14-.64.14-.19.28-.74.91-.91 1.09-.17.18-.34.2-.62.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.56-1.93-.17-.28-.02-.43.13-.57.13-.13.28-.34.42-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.03-.5-.08-.14-.64-1.54-.88-2.12-.23-.56-.47-.48-.64-.49-.16-.01-.36-.02-.56-.02s-.5.07-.76.35c-.26.28-1 1-.99 2.43.01 1.43 1.03 2.81 1.18 3.01.15.2 2.02 3.09 4.89 4.21.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.65-.67 1.89-1.31.23-.64.23-1.19.16-1.31-.07-.12-.26-.19-.54-.33z"
+            />
+          </svg>
+          WhatsApp
+        </a>
+        <a
+          href="mailto:Junior_julescesar10@hotmail.com"
+          class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-colors justify-center"
+          data-translate="emailBtn"
+        >
+          Email
+        </a>
+      </div>
+      <button
+        id="close-support-chat"
+        class="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-xl font-bold bg-white rounded-full w-8 h-8 flex items-center justify-center focus:outline-none"
+        aria-label="Close"
+      >
+        &times;
+      </button>
+    </div>
 
     <!-- Main Container -->
     <div class="container mx-auto px-4 py-8">
-        
-        <!-- Main Menu -->
-        <div id="main-menu" class="fade-in">
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
-                    <h2 class="font-poppins text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4" data-translate="chooseLevel">Choose Your Contribution Level</h2>
-                    <p class="font-inter text-center text-gray-600 mb-8 md:mb-12 text-base md:text-lg max-w-2xl mx-auto" data-translate="selectType">
-                        Select the type of contribution you'd like to make to help build our Kirundi AI dataset
+      <!-- Main Menu -->
+      <div id="main-menu" class="fade-in">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
+            <h2
+              class="font-poppins text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4"
+              data-translate="chooseLevel"
+            >
+              Choose Your Contribution Level
+            </h2>
+            <p
+              class="font-inter text-center text-gray-600 mb-8 md:mb-12 text-base md:text-lg max-w-2xl mx-auto"
+              data-translate="selectType"
+            >
+              Select the type of contribution you'd like to make to help build
+              our Kirundi AI dataset
+            </p>
+
+            <div class="grid gap-6 md:gap-8">
+              <!-- Easy Level Button -->
+              <button
+                onclick="initEasyMode()"
+                class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group"
+              >
+                <div
+                  class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"
+                >
+                  <span class="text-3xl md:text-4xl">📝</span>
+                  <div class="text-center md:text-left">
+                    <div class="font-poppins font-bold level-button-text">
+                      Easy Level: Translate Kirundi To French
+                    </div>
+                    <p
+                      class="font-inter text-green-100 text-sm md:text-base mt-1 opacity-90 level-description"
+                    >
+                      Translate Kirundi sentences to French
                     </p>
-                    
-                    <div class="grid gap-6 md:gap-8">
-                        <!-- Easy Level Button -->
-                        <button onclick="initEasyMode()" 
-                                class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group">
-                            <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4">
-                                <span class="text-3xl md:text-4xl">📝</span>
-                                <div class="text-center md:text-left">
-                                    <div class="font-poppins font-bold level-button-text">Easy Level: Translate Kirundi To French</div>
-                                    <p class="font-inter text-green-100 text-sm md:text-base mt-1 opacity-90 level-description">
-                                        Translate Kirundi sentences to French
-                                    </p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <!-- Medium Level Button -->
-                        <button onclick="initMediumMode()" 
-                                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group">
-                            <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4">
-                                <span class="text-3xl md:text-4xl">🔄</span>
-                                <div class="text-center md:text-left">
-                                    <div class="font-poppins font-bold level-button-text">Medium Level: Translate French to Kirundi</div>
-                                    <p class="font-inter text-blue-100 text-sm md:text-base mt-1 opacity-90 level-description">
-                                        Translate French sentences to Kirundi
-                                    </p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <!-- Hard Level Button -->
-                        <button onclick="initHardMode()" 
-                                class="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group">
-                            <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4">
-                                <span class="text-3xl md:text-4xl">✍🏾</span>
-                                <div class="text-center md:text-left">
-                                    <div class="font-poppins font-bold level-button-text">Hard Level: Add New Sentences</div>
-                                    <p class="font-inter text-purple-100 text-sm md:text-base mt-1 opacity-90 level-description">
-                                        Create original Kirundi-French sentence pairs
-                                    </p>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
+              </button>
 
-        <!-- Easy Level UI -->
-        <div id="easy-mode" class="hidden fade-in">
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
-                    <!-- Header -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0">
-                        <h2 class="text-2xl md:text-3xl font-bold text-green-700">Easy Level: Translation Game</h2>
-                        <button onclick="backToMainMenu()" 
-                                class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base">
-                            ← Back to Menu
-                        </button>
+              <!-- Medium Level Button -->
+              <button
+                onclick="initMediumMode()"
+                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group"
+              >
+                <div
+                  class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"
+                >
+                  <span class="text-3xl md:text-4xl">🔄</span>
+                  <div class="text-center md:text-left">
+                    <div class="font-poppins font-bold level-button-text">
+                      Medium Level: Translate French to Kirundi
                     </div>
-
-                    <!-- Loading State -->
-                    <div id="loading-easy" class="text-center py-12">
-                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"></div>
-                        <p id="fetching-live-data" class="text-xl text-gray-600">Fetching live data from Hugging Face...</p>
-                        <p id="loading-untranslated" class="text-sm text-gray-500 mt-2">Loading untranslated phrases from the official dataset</p>
-                    </div>
-
-                    <!-- Easy Level Error State (shown when live data cannot be loaded) -->
-                    <div id="easy-error" class="hidden py-10 flex justify-center">
-                        <div class="max-w-xl w-full bg-red-50 border border-red-200 rounded-2xl px-6 py-6 shadow-sm">
-                            <div class="flex items-start gap-3">
-                                <div class="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-red-100 text-red-600">
-                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a1 1 0 00.86 1.5h18.64a1 1 0 00.86-1.5L13.71 3.86a1 1 0 00-1.72 0z" />
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 id="easy-error-title" class="text-lg font-semibold text-red-800 mb-1">
-                                        Error loading data
-                                    </h3>
-                                    <p id="easy-error-message" class="text-sm text-red-700 mb-4">
-                                        We couldn't load the Kirundi phrases live from Hugging Face. Please check your Internet connection, then return to the main menu to try again.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Game UI -->
-                    <div id="game-ui" class="hidden">
-                        <!-- Progress -->
-                        <div class="mb-6">
-                            <div class="flex justify-between text-sm text-gray-600 mb-2">
-                                <span id="easy-progress-label">Progress</span>
-                                <span id="progress-text">0 / 20</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div id="progress-bar" class="bg-green-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
-                            </div>
-                        </div>
-
-                        <!-- Kirundi Phrase -->
-                        <div class="mb-6">
-                            <label class="block text-lg font-semibold text-gray-700 mb-2">Kirundi Phrase:</label>
-                            <div id="kirundi-phrase" class="bg-green-50 border-2 border-green-200 rounded-lg p-4 text-2xl font-medium text-gray-800 min-h-[80px] flex items-center">
-                                <!-- Phrase will be inserted here -->
-                            </div>
-                            <!-- Report Problem Button -->
-                            <div class="mt-3 flex items-center justify-center">
-                                <button id="report-problem-btn" onclick="toggleCorrectionBox()" 
-                                        class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 border border-red-200 hover:border-red-300 rounded-lg text-red-700 hover:text-red-800 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                                    </svg>
-                                    <span id="report-problem-text">Signaler un problème avec cette phrase</span>
-                                </button>
-                            </div>
-                            <div class="mt-1 text-center">
-                                <p class="text-xs text-gray-500">
-                                    <span id="report-help-text">Cliquez si vous trouvez des erreurs dans la phrase kirundi</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Correction Box (Hidden by default) -->
-                        <div id="correction-container" class="mb-6 hidden">
-                            <label class="block text-lg font-semibold text-gray-700 mb-2">
-                                <span id="correction-label">Corriger la phrase kirundi:</span>
-                            </label>
-                            <textarea id="correction-box" 
-                                    class="w-full p-4 border-2 border-yellow-300 rounded-lg focus:border-yellow-500 focus:outline-none text-lg resize-none bg-yellow-50"
-                                    rows="3" 
-                                    placeholder="Corrigez les erreurs dans la phrase kirundi..."></textarea>
-                            <div class="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                                <p class="text-sm text-yellow-800">
-                                    <span class="font-medium">💡 <span id="correction-help">Aide:</span></span> 
-                                    <span id="correction-instructions">Corrigez les fautes d'orthographe, de grammaire ou autres erreurs dans la phrase kirundi ci-dessus.</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- French Translation Input -->
-                        <div class="mb-6">
-                            <label for="french-input" class="block text-lg font-semibold text-gray-700 mb-2">Your French Translation:</label>
-                            <textarea id="french-input" 
-                                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg resize-none"
-                                    rows="3" 
-                                    placeholder="Type your French translation here..."></textarea>
-                            <div class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                                <p class="text-sm text-blue-700 skip-help-text">
-                                    <span class="font-medium">💡 Don't know the answer?</span> 
-                                    No problem! Click "Skip" or press <kbd class="bg-blue-100 px-2 py-1 rounded text-xs">Escape</kbd> to move to the next phrase.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Error Message -->
-                        <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                            <span id="easy-error-text">Please enter a translation before continuing.</span>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="text-center">
-                            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-4">
-                                <button onclick="skipEasyPhrase()" 
-                                        class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl text-base md:text-lg transition-colors btn-modern order-2 sm:order-1">
-                                    ⏭️ Skip
-                                </button>
-                                <button id="next-button" onclick="nextEasyPhrase()" 
-                                        class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl text-lg md:text-xl transition-colors btn-modern order-1 sm:order-2">
-                                    Submit Translation →
-                                </button>
-                            </div>
-                            <div class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
-                                💡 <strong>Shortcuts:</strong> Ctrl+Enter to submit • Escape to skip
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Completion UI -->
-                    <div id="completion-ui" class="hidden text-center py-12">
-                        <div class="text-6xl mb-4">🎉</div>
-                        <h3 class="text-2xl font-bold text-green-700 mb-4">Congratulations!</h3>
-                        <p class="text-lg text-gray-600 mb-6">You've completed a batch of translations!</p>
-                        
-                        <!-- Download Button -->
-                        <div class="mb-6">
-                            <button id="submit-easy-button"
-                                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors pulse-button"
-                                    onclick="submitEasyTranslations()">
-                                Submit Translations
-                            </button>
-                        </div>
-                        
-                    </div>
+                    <p
+                      class="font-inter text-blue-100 text-sm md:text-base mt-1 opacity-90 level-description"
+                    >
+                      Translate French sentences to Kirundi
+                    </p>
+                  </div>
                 </div>
-            </div>
-        </div>
+              </button>
 
-        <!-- Medium Level UI -->
-        <div id="medium-mode" class="hidden fade-in">
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
-                    <!-- Header -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0">
-                        <h2 class="text-2xl md:text-3xl font-bold text-blue-700">Medium Level: Translate French to Kirundi</h2>
-                        <button onclick="backToMainMenu()" 
-                                class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base">
-                            ← Back to Menu
-                        </button>
+              <!-- Hard Level Button -->
+              <button
+                onclick="initHardMode()"
+                class="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group"
+              >
+                <div
+                  class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"
+                >
+                  <span class="text-3xl md:text-4xl">✍🏾</span>
+                  <div class="text-center md:text-left">
+                    <div class="font-poppins font-bold level-button-text">
+                      Hard Level: Add New Sentences
                     </div>
-
-                    <!-- Loading State -->
-                    <div id="loading-medium" class="text-center py-12">
-                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                        <p id="loading-medium-data" class="text-xl text-gray-600">Loading French prompts and checking database...</p>
-                        <p id="preparing-session" class="text-sm text-gray-500 mt-2">Preparing your translation session</p>
-                    </div>
-
-                    <!-- Medium Level Error State (shown when live data cannot be loaded) -->
-                    <div id="medium-error" class="hidden py-10 flex justify-center">
-                        <div class="max-w-xl w-full bg-blue-50 border border-blue-200 rounded-2xl px-6 py-6 shadow-sm">
-                            <div class="flex items-start gap-3">
-                                <div class="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a1 1 0 00.86 1.5h18.64a1 1 0 00.86-1.5L13.71 3.86a1 1 0 00-1.72 0z" />
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 id="medium-error-title" class="text-lg font-semibold text-blue-800 mb-1">
-                                        Error loading Medium Mode
-                                    </h3>
-                                    <p id="medium-error-message" class="text-sm text-blue-700 mb-4">
-                                        We couldn't load the French sentences for Medium Mode. Please check your Internet connection, then return to the main menu to try again.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Game UI -->
-                    <div id="medium-game-ui" class="hidden">
-                        <!-- Instructions -->
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-                            <p class="text-blue-800">Translate French sentences to Kirundi. Your translations will be checked against our database to avoid duplicates.</p>
-                        </div>
-
-                        <!-- Progress -->
-                        <div class="mb-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span id="medium-progress-label" class="text-sm font-medium text-blue-700">Progress</span>
-                                <span id="medium-progress-text" class="text-sm text-gray-600">0 / 20</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div id="medium-progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
-                            </div>
-                        </div>
-
-                        <!-- French Sentence Display -->
-                        <div class="mb-6">
-                            <label class="block text-lg font-semibold text-gray-700 mb-3">French Sentence:</label>
-                            <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center">
-                                <p id="french-sentence" class="text-xl md:text-2xl font-medium text-blue-900 leading-relaxed">
-                                    <!-- French sentence will be displayed here -->
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Kirundi Translation Input -->
-                        <div class="mb-6">
-                            <label for="kirundi-translation" class="block text-lg font-semibold text-gray-700 mb-2">Your Kirundi Translation:</label>
-                            <textarea id="kirundi-translation" 
-                                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg resize-none"
-                                    rows="3" 
-                                    placeholder="Type your Kirundi translation here..."></textarea>
-                            <div class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                                <p class="text-sm text-blue-700 skip-help-text">
-                                    <span class="font-medium">💡 Don't know the answer?</span> 
-                                    No problem! Click "Skip" or press <kbd class="bg-blue-100 px-2 py-1 rounded text-xs">Escape</kbd> to move to the next sentence.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Error Message -->
-                        <div id="medium-error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                            <!-- Error message will be inserted here -->
-                        </div>
-
-                        <!-- Success Message -->
-                        <div id="medium-success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                            <span id="medium-success-text">Translation added successfully!</span>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="text-center">
-                            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-4">
-                                <button onclick="skipMediumSentence()" 
-                                        class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl text-base md:text-lg transition-colors btn-modern order-2 sm:order-1">
-                                    ⏭️ Skip
-                                </button>
-                                <button id="medium-submit-button" onclick="submitMediumTranslation()" 
-                                        class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-xl text-lg md:text-xl transition-colors btn-modern order-1 sm:order-2">
-                                    Submit Translation →
-                                </button>
-                            </div>
-                            <div class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
-                                💡 <strong>Shortcuts:</strong> Ctrl+Enter to submit • Escape to skip
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Completion UI -->
-                    <div id="medium-completion-ui" class="hidden text-center py-12">
-                        <div class="text-6xl mb-4">🎉</div>
-                        <h3 class="text-2xl font-bold text-blue-700 mb-4">Excellent Work!</h3>
-                        <p class="text-lg text-gray-600 mb-6">You've completed a batch of French to Kirundi translations!</p>
-                        
-                        <!-- Download Button -->
-                        <div class="mb-6">
-                            <button id="submit-medium-button"
-                                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors pulse-button"
-                                    onclick="submitMediumTranslations()">
-                                Submit Translations
-                            </button>
-                        </div>
-                    </div>
+                    <p
+                      class="font-inter text-purple-100 text-sm md:text-base mt-1 opacity-90 level-description"
+                    >
+                      Create original Kirundi-French sentence pairs
+                    </p>
+                  </div>
                 </div>
+              </button>
             </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Hard Level UI -->
-        <div id="hard-mode" class="hidden fade-in">
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
-                    <!-- Header -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0">
-                        <h2 class="text-2xl md:text-3xl font-bold text-purple-700">Hard Level: Add New Sentences</h2>
-                        <button onclick="backToMainMenu()" 
-                                class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base">
-                            ← Back to Menu
-                        </button>
-                    </div>
+      <!-- Easy Level UI -->
+      <div id="easy-mode" class="hidden fade-in">
+        <div class="max-w-5xl mx-auto">
+          <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
+            <!-- Header -->
+            <div
+              class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0"
+            >
+              <h2 class="text-2xl md:text-3xl font-bold text-green-700">
+                Easy Level: Translation Game
+              </h2>
+              <button
+                onclick="backToMainMenu()"
+                class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base"
+              >
+                ← Back to Menu
+              </button>
+            </div>
 
-                    <!-- Instructions -->
-                    <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-6">
-                        <p class="text-purple-800">Create new Kirundi-French sentence pairs. Make sure your Kirundi sentences are meaningful and contain at least 4 words.</p>
-                    </div>
+            <!-- Loading State -->
+            <div id="loading-easy" class="text-center py-12">
+              <div
+                class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"
+              ></div>
+              <p id="fetching-live-data" class="text-xl text-gray-600">
+                Fetching live data from Hugging Face...
+              </p>
+              <p id="loading-untranslated" class="text-sm text-gray-500 mt-2">
+                Loading untranslated phrases from the official dataset
+              </p>
+            </div>
 
-                    <!-- Counter -->
-                    <div class="mb-6">
-                        <p id="sentence-counter" class="text-lg font-semibold text-gray-700">You have added 0 sentences.</p>
-                    </div>
-
-                    <!-- Input Form -->
-                    <div class="space-y-6 mb-8">
-                        <!-- Kirundi Input -->
-                        <div>
-                            <label for="new-kirundi" class="block text-lg font-semibold text-gray-700 mb-2">New Kirundi Sentence:</label>
-                            <textarea id="hard-new-kirundi" 
-                                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg resize-none"
-                                    rows="3" 
-                                    placeholder="Enter a new Kirundi sentence..."></textarea>
-                        </div>
-
-                        <!-- French Input -->
-                        <div>
-                            <label for="hard-new-french" class="block text-lg font-semibold text-gray-700 mb-2">French Translation:</label>
-                            <textarea id="hard-new-french" 
-                                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg resize-none"
-                                    rows="3" 
-                                    placeholder="Enter the French translation..."></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Error Message -->
-                    <div id="hard-error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                        <!-- Error message will be inserted here -->
-                    </div>
-
-                    <!-- Success Message -->
-                    <div id="hard-success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                        Sentence pair added successfully!
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button onclick="addHardSentence()" 
-                                class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors btn-modern">
-                            ➕ Add Sentence
-                        </button>
-                        
-                        <button id="submit-hard-button"
-                                class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors pulse-button"
-                                onclick="submitHardSentences()">
-                            Send Sentences
-                        </button>
-                    </div>
-                    
-                    
+            <!-- Easy Level Error State (shown when live data cannot be loaded) -->
+            <div id="easy-error" class="hidden py-10 flex justify-center">
+              <div
+                class="max-w-xl w-full bg-red-50 border border-red-200 rounded-2xl px-6 py-6 shadow-sm"
+              >
+                <div class="flex items-start gap-3">
+                  <div
+                    class="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-red-100 text-red-600"
+                  >
+                    <svg
+                      class="h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a1 1 0 00.86 1.5h18.64a1 1 0 00.86-1.5L13.71 3.86a1 1 0 00-1.72 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h3
+                      id="easy-error-title"
+                      class="text-lg font-semibold text-red-800 mb-1"
+                    >
+                      Error loading data
+                    </h3>
+                    <p
+                      id="easy-error-message"
+                      class="text-sm text-red-700 mb-4"
+                    >
+                      We couldn't load the Kirundi phrases live from Hugging
+                      Face. Please check your Internet connection, then return
+                      to the main menu to try again.
+                    </p>
+                  </div>
                 </div>
+              </div>
             </div>
+
+            <!-- Game UI -->
+            <div id="game-ui" class="hidden">
+              <!-- Progress -->
+              <div class="mb-6">
+                <div class="flex justify-between text-sm text-gray-600 mb-2">
+                  <span id="easy-progress-label">Progress</span>
+                  <span id="progress-text">0 / 20</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    id="progress-bar"
+                    class="bg-green-500 h-2 rounded-full transition-all duration-300"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Kirundi Phrase -->
+              <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 mb-2"
+                  >Kirundi Phrase:</label
+                >
+                <div
+                  id="kirundi-phrase"
+                  class="bg-green-50 border-2 border-green-200 rounded-lg p-4 text-2xl font-medium text-gray-800 min-h-[80px] flex items-center"
+                >
+                  <!-- Phrase will be inserted here -->
+                </div>
+                <!-- Report Problem Button -->
+                <div class="mt-3 flex items-center justify-center">
+                  <button
+                    id="report-problem-btn"
+                    onclick="toggleCorrectionBox()"
+                    class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 border border-red-200 hover:border-red-300 rounded-lg text-red-700 hover:text-red-800 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 16.5c-.77.833.192 2.5 1.732 2.5z"
+                      ></path>
+                    </svg>
+                    <span id="report-problem-text"
+                      >Signaler un problème avec cette phrase</span
+                    >
+                  </button>
+                </div>
+                <div class="mt-1 text-center">
+                  <p class="text-xs text-gray-500">
+                    <span id="report-help-text"
+                      >Cliquez si vous trouvez des erreurs dans la phrase
+                      kirundi</span
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <!-- Correction Box (Hidden by default) -->
+              <div id="correction-container" class="mb-6 hidden">
+                <label class="block text-lg font-semibold text-gray-700 mb-2">
+                  <span id="correction-label">Corriger la phrase kirundi:</span>
+                </label>
+                <textarea
+                  id="correction-box"
+                  class="w-full p-4 border-2 border-yellow-300 rounded-lg focus:border-yellow-500 focus:outline-none text-lg resize-none bg-yellow-50"
+                  rows="3"
+                  placeholder="Corrigez les erreurs dans la phrase kirundi..."
+                ></textarea>
+                <div
+                  class="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-lg"
+                >
+                  <p class="text-sm text-yellow-800">
+                    <span class="font-medium"
+                      >💡 <span id="correction-help">Aide:</span></span
+                    >
+                    <span id="correction-instructions"
+                      >Corrigez les fautes d'orthographe, de grammaire ou autres
+                      erreurs dans la phrase kirundi ci-dessus.</span
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <!-- French Translation Input -->
+              <div class="mb-6">
+                <label
+                  for="french-input"
+                  class="block text-lg font-semibold text-gray-700 mb-2"
+                  >Your French Translation:</label
+                >
+                <textarea
+                  id="french-input"
+                  class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg resize-none"
+                  rows="3"
+                  placeholder="Type your French translation here..."
+                ></textarea>
+                <div
+                  class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg"
+                >
+                  <p class="text-sm text-blue-700 skip-help-text">
+                    <span class="font-medium">💡 Don't know the answer?</span>
+                    No problem! Click "Skip" or press
+                    <kbd class="bg-blue-100 px-2 py-1 rounded text-xs"
+                      >Escape</kbd
+                    >
+                    to move to the next phrase.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Error Message -->
+              <div
+                id="error-message"
+                class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4"
+              >
+                <span id="easy-error-text"
+                  >Please enter a translation before continuing.</span
+                >
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="text-center">
+                <div
+                  class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-4"
+                >
+                  <button
+                    onclick="skipEasyPhrase()"
+                    class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl text-base md:text-lg transition-colors btn-modern order-2 sm:order-1"
+                  >
+                    ⏭️ Skip
+                  </button>
+                  <button
+                    id="next-button"
+                    onclick="nextEasyPhrase()"
+                    class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl text-lg md:text-xl transition-colors btn-modern order-1 sm:order-2"
+                  >
+                    Submit Translation →
+                  </button>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
+                  💡 <strong>Shortcuts:</strong> Ctrl+Enter to submit • Escape
+                  to skip
+                </div>
+              </div>
+            </div>
+
+            <!-- Completion UI -->
+            <div id="completion-ui" class="hidden text-center py-12">
+              <div class="text-6xl mb-4">🎉</div>
+              <h3 class="text-2xl font-bold text-green-700 mb-4">
+                Congratulations!
+              </h3>
+              <p class="text-lg text-gray-600 mb-6">
+                You've completed a batch of translations!
+              </p>
+
+              <!-- Download Button -->
+              <div class="mb-6">
+                <button
+                  id="submit-easy-button"
+                  class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors pulse-button"
+                  onclick="submitEasyTranslations()"
+                >
+                  Submit Translations
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Medium Level UI -->
+      <div id="medium-mode" class="hidden fade-in">
+        <div class="max-w-5xl mx-auto">
+          <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
+            <!-- Header -->
+            <div
+              class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0"
+            >
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-700">
+                Medium Level: Translate French to Kirundi
+              </h2>
+              <button
+                onclick="backToMainMenu()"
+                class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base"
+              >
+                ← Back to Menu
+              </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading-medium" class="text-center py-12">
+              <div
+                class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"
+              ></div>
+              <p id="loading-medium-data" class="text-xl text-gray-600">
+                Loading French prompts and checking database...
+              </p>
+              <p id="preparing-session" class="text-sm text-gray-500 mt-2">
+                Preparing your translation session
+              </p>
+            </div>
+
+            <!-- Medium Level Error State (shown when live data cannot be loaded) -->
+            <div id="medium-error" class="hidden py-10 flex justify-center">
+              <div
+                class="max-w-xl w-full bg-blue-50 border border-blue-200 rounded-2xl px-6 py-6 shadow-sm"
+              >
+                <div class="flex items-start gap-3">
+                  <div
+                    class="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-600"
+                  >
+                    <svg
+                      class="h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a1 1 0 00.86 1.5h18.64a1 1 0 00.86-1.5L13.71 3.86a1 1 0 00-1.72 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h3
+                      id="medium-error-title"
+                      class="text-lg font-semibold text-blue-800 mb-1"
+                    >
+                      Error loading Medium Mode
+                    </h3>
+                    <p
+                      id="medium-error-message"
+                      class="text-sm text-blue-700 mb-4"
+                    >
+                      We couldn't load the French sentences for Medium Mode.
+                      Please check your Internet connection, then return to the
+                      main menu to try again.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Game UI -->
+            <div id="medium-game-ui" class="hidden">
+              <!-- Instructions -->
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-blue-800">
+                  Translate French sentences to Kirundi. Your translations will
+                  be checked against our database to avoid duplicates.
+                </p>
+              </div>
+
+              <!-- Progress -->
+              <div class="mb-6">
+                <div class="flex justify-between items-center mb-2">
+                  <span
+                    id="medium-progress-label"
+                    class="text-sm font-medium text-blue-700"
+                    >Progress</span
+                  >
+                  <span id="medium-progress-text" class="text-sm text-gray-600"
+                    >0 / 20</span
+                  >
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    id="medium-progress-bar"
+                    class="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- French Sentence Display -->
+              <div class="mb-6">
+                <label class="block text-lg font-semibold text-gray-700 mb-3"
+                  >French Sentence:</label
+                >
+                <div
+                  class="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center"
+                >
+                  <p
+                    id="french-sentence"
+                    class="text-xl md:text-2xl font-medium text-blue-900 leading-relaxed"
+                  >
+                    <!-- French sentence will be displayed here -->
+                  </p>
+                </div>
+              </div>
+
+              <!-- Kirundi Translation Input -->
+              <div class="mb-6">
+                <label
+                  for="kirundi-translation"
+                  class="block text-lg font-semibold text-gray-700 mb-2"
+                  >Your Kirundi Translation:</label
+                >
+                <textarea
+                  id="kirundi-translation"
+                  class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg resize-none"
+                  rows="3"
+                  placeholder="Type your Kirundi translation here..."
+                ></textarea>
+                <div
+                  class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg"
+                >
+                  <p class="text-sm text-blue-700 skip-help-text">
+                    <span class="font-medium">💡 Don't know the answer?</span>
+                    No problem! Click "Skip" or press
+                    <kbd class="bg-blue-100 px-2 py-1 rounded text-xs"
+                      >Escape</kbd
+                    >
+                    to move to the next sentence.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Error Message -->
+              <div
+                id="medium-error-message"
+                class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4"
+              >
+                <!-- Error message will be inserted here -->
+              </div>
+
+              <!-- Success Message -->
+              <div
+                id="medium-success-message"
+                class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4"
+              >
+                <span id="medium-success-text"
+                  >Translation added successfully!</span
+                >
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="text-center">
+                <div
+                  class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-4"
+                >
+                  <button
+                    onclick="skipMediumSentence()"
+                    class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl text-base md:text-lg transition-colors btn-modern order-2 sm:order-1"
+                  >
+                    ⏭️ Skip
+                  </button>
+                  <button
+                    id="medium-submit-button"
+                    onclick="submitMediumTranslation()"
+                    class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-xl text-lg md:text-xl transition-colors btn-modern order-1 sm:order-2"
+                  >
+                    Submit Translation →
+                  </button>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
+                  💡 <strong>Shortcuts:</strong> Ctrl+Enter to submit • Escape
+                  to skip
+                </div>
+              </div>
+            </div>
+
+            <!-- Completion UI -->
+            <div id="medium-completion-ui" class="hidden text-center py-12">
+              <div class="text-6xl mb-4">🎉</div>
+              <h3 class="text-2xl font-bold text-blue-700 mb-4">
+                Excellent Work!
+              </h3>
+              <p class="text-lg text-gray-600 mb-6">
+                You've completed a batch of French to Kirundi translations!
+              </p>
+
+              <!-- Download Button -->
+              <div class="mb-6">
+                <button
+                  id="submit-medium-button"
+                  class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors pulse-button"
+                  onclick="submitMediumTranslations()"
+                >
+                  Submit Translations
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hard Level UI -->
+      <div id="hard-mode" class="hidden fade-in">
+        <div class="max-w-5xl mx-auto">
+          <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
+            <!-- Header -->
+            <div
+              class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0"
+            >
+              <h2 class="text-2xl md:text-3xl font-bold text-purple-700">
+                Hard Level: Add New Sentences
+              </h2>
+              <button
+                onclick="backToMainMenu()"
+                class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base"
+              >
+                ← Back to Menu
+              </button>
+            </div>
+
+            <!-- Instructions -->
+            <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-6">
+              <p class="text-purple-800">
+                Create new Kirundi-French sentence pairs. Make sure your Kirundi
+                sentences are meaningful and contain at least 4 words.
+              </p>
+            </div>
+
+            <!-- Counter -->
+            <div class="mb-6">
+              <p
+                id="sentence-counter"
+                class="text-lg font-semibold text-gray-700"
+              >
+                You have added 0 sentences.
+              </p>
+            </div>
+
+            <!-- Input Form -->
+            <div class="space-y-6 mb-8">
+              <!-- Kirundi Input -->
+              <div>
+                <label
+                  for="new-kirundi"
+                  class="block text-lg font-semibold text-gray-700 mb-2"
+                  >New Kirundi Sentence:</label
+                >
+                <textarea
+                  id="hard-new-kirundi"
+                  class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg resize-none"
+                  rows="3"
+                  placeholder="Enter a new Kirundi sentence..."
+                ></textarea>
+              </div>
+
+              <!-- French Input -->
+              <div>
+                <label
+                  for="hard-new-french"
+                  class="block text-lg font-semibold text-gray-700 mb-2"
+                  >French Translation:</label
+                >
+                <textarea
+                  id="hard-new-french"
+                  class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg resize-none"
+                  rows="3"
+                  placeholder="Enter the French translation..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Error Message -->
+            <div
+              id="hard-error-message"
+              class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4"
+            >
+              <!-- Error message will be inserted here -->
+            </div>
+
+            <!-- Success Message -->
+            <div
+              id="hard-success-message"
+              class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4"
+            >
+              Sentence pair added successfully!
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onclick="addHardSentence()"
+                class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors btn-modern"
+              >
+                ➕ Add Sentence
+              </button>
+
+              <button
+                id="submit-hard-button"
+                class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors pulse-button"
+                onclick="submitHardSentences()"
+              >
+                Send Sentences
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Success Overlay -->
-    <div id="success-overlay" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center animate-fade-in">
-            <div class="flex justify-center mb-4">
-                <div class="bg-green-100 rounded-full p-4">
-                    <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                </div>
-            </div>
-            <h2 id="success-title" class="text-2xl font-bold text-green-700 mb-2">Thank you for your contribution🙏🏾!</h2>
-            <p id="success-message" class="text-gray-700 mb-6">Your data has been submitted successfully. Murakoze cane🙏🏾!</p>
-            <button id="success-main-menu-btn" onclick="closeSuccessOverlay()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors shadow-lg">
-                Back to Main Menu
-            </button>
+    <div
+      id="success-overlay"
+      class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center animate-fade-in"
+      >
+        <div class="flex justify-center mb-4">
+          <div class="bg-green-100 rounded-full p-4">
+            <svg
+              class="w-12 h-12 text-green-600"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
         </div>
+        <h2 id="success-title" class="text-2xl font-bold text-green-700 mb-2">
+          Thank you for your contribution🙏🏾!
+        </h2>
+        <p id="success-message" class="text-gray-700 mb-6">
+          Your data has been submitted successfully. Murakoze cane🙏🏾!
+        </p>
+        <button
+          id="success-main-menu-btn"
+          onclick="closeSuccessOverlay()"
+          class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors shadow-lg"
+        >
+          Back to Main Menu
+        </button>
+      </div>
     </div>
 
     <!-- Footer -->
-    <footer class="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-12 mt-16 overflow-hidden">
-        <!-- Decorative Top Border -->
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-white to-green-500"></div>
-        
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-4 left-4 w-8 h-8 border-2 border-red-500 rounded-full"></div>
-            <div class="absolute top-8 right-8 w-6 h-6 border-2 border-green-500 rounded-full"></div>
-            <div class="absolute bottom-4 left-1/4 w-4 h-4 border-2 border-white rounded-full"></div>
-            <div class="absolute bottom-8 right-1/3 w-5 h-5 border-2 border-red-500 rounded-full"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative">
-            <div class="text-center">
-                <div class="mb-6">
-                    <h3 class="font-poppins text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-green-400 via-white to-red-400 bg-clip-text text-transparent">
-                        🇧🇮 Ijwi ry'Ikirundi AI
-                    </h3>
-                    <p id="footer-description" class="font-inter text-gray-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-                        Preserving and advancing the Kirundi language through artificial intelligence and community collaboration.
-                    </p>
-                </div>
-                
-                <div class="border-t border-gray-600 pt-6">
-                    <p id="powered-by" class="font-inter text-gray-300 text-base md:text-lg mb-2">
-                        Powered by <span class="font-poppins text-green-400 font-bold text-lg">Ijwi Ry'Ikirundi AI Team</span>
-                    </p>
-                    <div class="flex items-center justify-center space-x-3 text-sm text-gray-400">
-                        <span>© 2025</span>
-                        <span class="w-1 h-1 bg-red-500 rounded-full"></span>
-                        <span id="footer-built">Built with ❤️ for the Kirundi community</span>
-                        <span class="w-1 h-1 bg-green-500 rounded-full"></span>
-                        <span>🇧🇮 Burundi</span>
-                    </div>
-                </div>
+    <footer
+      class="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-12 mt-16 overflow-hidden"
+    >
+      <!-- Decorative Top Border -->
+      <div
+        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-white to-green-500"
+      ></div>
+
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div
+          class="absolute top-4 left-4 w-8 h-8 border-2 border-red-500 rounded-full"
+        ></div>
+        <div
+          class="absolute top-8 right-8 w-6 h-6 border-2 border-green-500 rounded-full"
+        ></div>
+        <div
+          class="absolute bottom-4 left-1/4 w-4 h-4 border-2 border-white rounded-full"
+        ></div>
+        <div
+          class="absolute bottom-8 right-1/3 w-5 h-5 border-2 border-red-500 rounded-full"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative">
+        <div class="text-center">
+          <div class="mb-6">
+            <h3
+              class="font-poppins text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-green-400 via-white to-red-400 bg-clip-text text-transparent"
+            >
+              🇧🇮 Ijwi ry'Ikirundi AI
+            </h3>
+            <p
+              id="footer-description"
+              class="font-inter text-gray-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed"
+            >
+              Preserving and advancing the Kirundi language through artificial
+              intelligence and community collaboration.
+            </p>
+          </div>
+
+          <div class="border-t border-gray-600 pt-6">
+            <p
+              id="powered-by"
+              class="font-inter text-gray-300 text-base md:text-lg mb-2"
+            >
+              Powered by
+              <span class="font-poppins text-green-400 font-bold text-lg"
+                >Ijwi Ry'Ikirundi AI Team</span
+              >
+            </p>
+            <div
+              class="flex items-center justify-center space-x-3 text-sm text-gray-400"
+            >
+              <span>© 2025</span>
+              <span class="w-1 h-1 bg-red-500 rounded-full"></span>
+              <span id="footer-built"
+                >Built with ❤️ for the Kirundi community</span
+              >
+              <span class="w-1 h-1 bg-green-500 rounded-full"></span>
+              <span>🇧🇮 Burundi</span>
             </div>
+          </div>
         </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

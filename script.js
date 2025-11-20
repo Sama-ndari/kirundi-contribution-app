@@ -9,7 +9,7 @@ let mediumProgress = 0;
 const batchSize = 20;
 
 // Language toggle variables
-let currentLanguage = "en"; // Default to English
+let currentLanguage = "fr"; // Default to English
 
 // Medium Level variables
 let frenchPrompts = [];
@@ -347,7 +347,10 @@ function shuffleArray(array) {
 
 function showNextEasyPhrase() {
   const aiSuggestionMsg = document.getElementById("ai-suggestion-msg");
-  const aiSuggestionMsgText = document.getElementById("ai-suggestion-msg-text");
+  const validationUi = document.getElementById("validation-ui");
+  const frenchInputContainer = document.getElementById(
+    "french-input-container"
+  );
 
   if (progress >= Math.min(batchSize, phrasesToTranslate.length)) {
     showCompletion();
@@ -356,21 +359,73 @@ function showNextEasyPhrase() {
   updateProgress();
   const phraseObj = phrasesToTranslate[progress];
   document.getElementById("kirundi-phrase").textContent = phraseObj.kirundi;
+  document.getElementById("french-input").value = ""; // Always clear input first
+
   if (phraseObj.suggestion && phraseObj.suggestion.length > 0) {
-    document.getElementById("french-input").value = phraseObj.suggestion;
-    if (aiSuggestionMsg && aiSuggestionMsgText) {
-      aiSuggestionMsgText.textContent =
-        currentLanguage === "fr"
-          ? "Suggestion IA : Vous pouvez corriger ou valider cette traduction générée automatiquement."
-          : "AI suggestion: You can edit or save this automatically generated translation if it's correct.";
+    // Show Validation UI (Approve/Edit)
+    if (validationUi) validationUi.classList.remove("hidden");
+    if (frenchInputContainer) frenchInputContainer.classList.add("hidden");
+
+    if (aiSuggestionMsg) {
+      // Set the label
+      const labelElement = document.getElementById("ai-suggestion-label");
+      if (labelElement) {
+        labelElement.textContent =
+          currentLanguage === "fr" ? "Suggestion IA" : "AI Suggestion";
+      }
+
+      // Set the suggestion text
+      const textElement = document.getElementById("ai-suggestion-text");
+      if (textElement) {
+        textElement.textContent = phraseObj.suggestion;
+      }
+
       aiSuggestionMsg.classList.remove("hidden");
     }
   } else {
-    document.getElementById("french-input").value = "";
+    // No suggestion -> Show manual input directly
+    if (validationUi) validationUi.classList.add("hidden");
+    if (frenchInputContainer) frenchInputContainer.classList.remove("hidden");
     if (aiSuggestionMsg) aiSuggestionMsg.classList.add("hidden");
   }
   hideElement("error-message");
   resetCorrectionBox();
+}
+
+function approveEasySuggestion() {
+  const phraseObj = phrasesToTranslate[progress];
+  const suggestion = phraseObj.suggestion;
+
+  // Get correction if any (though usually hidden in this view, we check for safety)
+  const correctionBox = document.getElementById("correction-box");
+  const correctedKirundiText = correctionBox.value.trim() || phraseObj.kirundi;
+
+  userTranslations.push({
+    original_kirundi: phraseObj.kirundi,
+    corrected_kirundi: correctedKirundiText,
+    french_translation: suggestion,
+  });
+
+  progress++;
+  showNextEasyPhrase();
+}
+
+function startManualEdit() {
+  const validationUi = document.getElementById("validation-ui");
+  const frenchInputContainer = document.getElementById(
+    "french-input-container"
+  );
+  const frenchInput = document.getElementById("french-input");
+  const phraseObj = phrasesToTranslate[progress];
+
+  if (validationUi) validationUi.classList.add("hidden");
+  if (frenchInputContainer) frenchInputContainer.classList.remove("hidden");
+
+  // Pre-fill with suggestion
+  if (phraseObj.suggestion) {
+    frenchInput.value = phraseObj.suggestion;
+  }
+  frenchInput.focus();
 }
 
 function updateProgress() {
@@ -494,9 +549,12 @@ function resetCorrectionBox() {
 
 // Medium Mode Functions
 async function initMediumMode() {
+  console.log("initMediumMode called");
   hideElement("main-menu");
   showElement("medium-mode");
+  console.log("Shown medium-mode");
   showElement("loading-medium");
+  console.log("Shown loading-medium");
   hideElement("medium-game-ui");
   hideElement("medium-completion-ui");
   hideElement("medium-error");
@@ -1351,8 +1409,7 @@ function translateInterface() {
       easyTitle: "Easy Level: Translation Game",
       kirundiPhrase: "Kirundi Phrase:",
       frenchTranslation: "Your French Translation:",
-      aiSuggestionText:
-        "AI suggestion: You can edit or save this translation if it's correct.",
+      aiSuggestionText: "AI suggestion: ",
       // Easy Level - Placeholders
       easyPlaceholder: "Type your French translation here...",
       // Medium Level
@@ -1413,9 +1470,6 @@ function translateInterface() {
       easyErrorTitle: "Unable to load live data",
       easyErrorMessage:
         "We could not load Kirundi sentences from the live Hugging Face dataset. Please check your internet connection, then return to the main menu and try again.",
-      easyErrorCta: "← Back to main menu",
-      // Page title
-      pageTitle: "Ijwi ry'Ikirundi AI: Contribution Hub",
       // Report Problem Feature
       reportProblem: "Report a problem with this sentence",
       reportHelpText: "Click if you find errors in the Kirundi sentence",
@@ -1425,6 +1479,8 @@ function translateInterface() {
       correctionHelp: "Help:",
       correctionInstructions:
         "Fix any spelling, grammar, or other errors in the Kirundi sentence above.",
+      approveSuggestion: "Approve Suggestion",
+      editTranslation: "Edit Translation",
     },
     fr: {
       supportBtn: "Assistance",
@@ -1437,11 +1493,10 @@ function translateInterface() {
       mediumErrorTitle: "Erreur de chargement du mode Moyen",
       mediumErrorMessage:
         "Nous n'avons pas pu charger les phrases françaises pour le mode Moyen. Veuillez vérifier votre connexion Internet, puis revenir au menu principal pour réessayer.",
-      mediumErrorCta: "← Retour au menu principal",
       title: "Ijwi ry'Ikirundi AI",
       subtitle: "Hub de Contribution",
       mission:
-        "Aidez-nous à construire l'avenir de l'IA en langue kirundi grâce à la collaboration communautaire",
+        "Aidez-nous à construire l'avenir de l'IA en langue Kirundi grâce à la collaboration communautaire",
       preserving: "Préserver l'Héritage",
       building: "Construire l'Avenir",
       empowering: "Autonomiser la Communauté",
@@ -1469,8 +1524,7 @@ function translateInterface() {
       easyTitle: "Niveau Facile: Jeu de Traduction",
       kirundiPhrase: "Phrase Kirundi:",
       frenchTranslation: "Votre Traduction Française:",
-      aiSuggestionText:
-        "Suggestion IA : Vous pouvez corriger ou valider cette traduction générée automatiquement.",
+      aiSuggestionText: "Suggestion IA : ",
       // Easy Level - Placeholders
       easyPlaceholder: "Tapez votre traduction française ici...",
       // Medium Level
@@ -1526,16 +1580,13 @@ function translateInterface() {
       hardErrorMessage: "Les champs Kirundi et Français doivent être remplis.",
       // Footer
       footerDescription:
-        "Préserver et faire progresser la langue kirundi grâce à l'intelligence artificielle et à la collaboration communautaire.",
+        "Préserver et faire progresser la langue Kirundi grâce à l'intelligence artificielle et à la collaboration communautaire.",
       footerBuilt: "Construit avec ❤️ pour la communauté Kirundi",
       poweredBy: "Propulsé par l'Équipe Ijwi Ry'Ikirundi AI",
       // Easy Level - Live data error
       easyErrorTitle: "Erreur de chargement des données",
       easyErrorMessage:
         "Nous n'avons pas pu charger les phrases kirundi en direct depuis Hugging Face. Veuillez vérifier votre connexion Internet, puis revenir au menu principal pour réessayer.",
-      easyErrorCta: "← Retour au menu principal",
-      // Page title
-      pageTitle: "Ijwi ry'Ikirundi AI: Hub de Contribution",
       // Report Problem Feature
       reportProblem: "Signaler un problème avec cette phrase",
       reportHelpText:
@@ -1546,6 +1597,8 @@ function translateInterface() {
       correctionHelp: "Aide:",
       correctionInstructions:
         "Corrigez les fautes d'orthographe, de grammaire ou autres erreurs dans la phrase kirundi ci-dessus.",
+      approveSuggestion: "Approuver la Suggestion",
+      editTranslation: "Modifier la Traduction",
     },
   };
 
@@ -1567,22 +1620,27 @@ function translateInterface() {
     "easy-error-text": t.easyErrorMessage,
     "easy-progress-label": t.progress,
     "medium-progress-label": t.progress,
+    "medium-progress-label": t.progress,
     "medium-success-text": t.translationAdded,
+    "medium-instructions": t.mediumDesc2,
+    "hard-instructions": t.hardDesc2,
     // Easy Level - Error UI
     "easy-error-title": t.easyErrorTitle,
     "easy-error-message": t.easyErrorMessage,
-    "easy-error-cta": t.easyErrorCta,
-    "ai-suggestion-msg-text": t.aiSuggestion,
+    // NOTE: ai-suggestion-msg-text is handled separately below to preserve the suggestion
     // Medium Level - Error UI
     "medium-error-title": t.mediumErrorTitle,
     "medium-error-message": t.mediumErrorMessage,
-    "medium-error-cta": t.mediumErrorCta,
     // Report Problem Feature
     "report-problem-text": t.reportProblem,
     "report-help-text": t.reportHelpText,
     "correction-label": t.correctionLabel,
     "correction-help": t.correctionHelp,
     "correction-instructions": t.correctionInstructions,
+    "approve-btn-text": t.approveSuggestion,
+    "edit-btn-text": t.editTranslation,
+    // Hard Level - Success message
+    "hard-success-text": t.sentencePairAdded,
   };
 
   // Special handling for error messages that might be dynamically generated
@@ -1638,6 +1696,14 @@ function translateInterface() {
       element.textContent = elements[id];
     }
   });
+
+  // Special handling for AI suggestion label (text stays the same, only label changes)
+  const aiSuggestionLabel = document.getElementById("ai-suggestion-label");
+  if (aiSuggestionLabel) {
+    aiSuggestionLabel.textContent =
+      currentLanguage === "fr" ? "Suggestion IA" : "AI Suggestion";
+  }
+  // Note: ai-suggestion-text contains only the suggestion and doesn't need translation
 
   // Update main menu elements
   const mainMenuElements = document.querySelectorAll("[data-translate]");

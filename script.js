@@ -249,9 +249,26 @@ async function loadTranslationData() {
     console.log(
       `${phrasesToTranslate.length} new phrases available for translation`
     );
+
     shuffleArray(phrasesToTranslate);
-    // Sort by Kirundi phrase length (shortest first)
+
+    // --- FINAL FIX: FORCE RANDOM SELECTION FROM SHORTEST POOL ---
+
+    // Step 1: Create a pool of the shortest available sentences (e.g., top 100 shortest)
+    // First, sort ALL available phrases by length (shortest first)
     phrasesToTranslate.sort((a, b) => a.kirundi.length - b.kirundi.length);
+
+    // Step 2: Take the 100 shortest phrases available as the "starting pool"
+    const shortestPhrasesPool = phrasesToTranslate.slice(0, 100);
+
+    // Step 3: SHUFFLE the starting pool (guaranteed randomness for the first 20)
+    shuffleArray(shortestPhrasesPool);
+
+    // Step 4: Use the first 20 phrases from this randomly shuffled, shortest pool
+    phrasesToTranslate = shortestPhrasesPool.slice(0, batchSize);
+
+    // --- END OF FINAL FIX ---
+
     if (phrasesToTranslate.length === 0) {
       throw new Error(
         "No new untranslated phrases found - you have already submitted all available phrases!"
@@ -338,6 +355,21 @@ function parseCSVLine(line) {
   return result;
 }
 
+// Seeded Random Number Generator (for consistent shuffling)
+function seededRandom(seed) {
+  const m = 0x80000000; // 2^31
+  let a = 1103515245;
+  let c = 12345;
+  // We use the unique user ID as the initial seed value
+  let state = seed || Math.floor(Math.random() * (m - 1));
+
+  return function () {
+    state = (a * state + c) % m;
+    return state / m;
+  };
+}
+
+// Function to generate a simple non-persistent random shuffle
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

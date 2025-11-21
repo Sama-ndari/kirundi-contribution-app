@@ -2052,3 +2052,16 @@ function initializeDarkMode() {
     html.classList.remove("dark");
   }
 }
+
+// Set current year in footer
+function setCurrentYear() {
+  const yearElement = document.getElementById("current-year");
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+}
+
+// Call setCurrentYear when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  setCurrentYear();
+});

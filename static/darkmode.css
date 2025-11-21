@@ -104,8 +104,52 @@
   color: #93c5fd !important;
 }
 
+/* Dark mode for French sentence container background */
 .dark #french-sentence::before {
   background-color: #1e3a8a !important;
+}
+
+/* Dark mode for all labels in Medium and Hard modes */
+.dark label {
+  color: #d1d5db !important;
+}
+
+/* Dark mode for headings */
+.dark h2,
+.dark h3,
+.dark h4 {
+  color: #f9fafb !important;
+}
+
+/* Dark mode for paragraph text */
+.dark p {
+  color: #d1d5db !important;
+}
+
+/* Dark mode for blue backgrounds (French sentence container) */
+.dark .bg-blue-50 {
+  background-color: #1e3a8a !important;
+}
+
+.dark .border-blue-200 {
+  border-color: #3b82f6 !important;
+}
+
+.dark .text-blue-900 {
+  color: #93c5fd !important;
+}
+
+/* Dark mode for purple backgrounds (Hard mode instructions) */
+.dark .bg-purple-50 {
+  background-color: #581c87 !important;
+}
+
+.dark .border-purple-500 {
+  border-color: #a855f7 !important;
+}
+
+.dark .text-purple-800 {
+  color: #e9d5ff !important;
 }
 
 .dark input[type="text"]::placeholder,
@@ -215,5 +259,6 @@ body,
 input,
 textarea,
 button {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
 }

@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="icon.png" alt="Kirundi AI Logo" width="80" height="80">
+<img src="static/icon.png" alt="Kirundi AI Logo" width="80" height="80">
 
 **A web application for collecting Kirundi language contributions to help build AI language models**
 
@@ -18,6 +18,8 @@ The **Ijwi ry'Ikirundi AI Contribution Hub** helps crowdsource Kirundi language 
 ### 🎯 Easy Level: Kirundi to French Translation
 
 - Translate existing Kirundi phrases to French
+- **AI-powered suggestions**: Get machine translation suggestions to approve or edit
+- **Smart workflow**: Approve suggestions with one click or edit manually
 - Live data from Hugging Face dataset
 - Progress tracking with localStorage
 - Downloads as `Kirundi_To_French.csv`
@@ -40,9 +42,12 @@ The **Ijwi ry'Ikirundi AI Contribution Hub** helps crowdsource Kirundi language 
 
 **All levels include:**
 
-- Keyboard shortcuts (Ctrl+Enter to submit, Escape to skip)
-- Mobile-responsive design
-- Language toggle button (FR/EN) for all instructions and feedback
+- 🌙 **Dark mode toggle**: Switch between light and dark themes with smooth animations
+- 🌐 **Language toggle button** (FR/EN) for all instructions and feedback
+- ⌨️ **Keyboard shortcuts** (Ctrl+Enter to submit, Escape to skip)
+- 📱 **Mobile-responsive design** with modern UI components
+- 🎨 **Professional button designs** with gradients, shadows, and smooth transitions
+- 💾 **Auto-save progress** to prevent data loss
 
 ## 🚀 Quick Start
 
@@ -63,9 +68,33 @@ python -m http.server 8000
 ## 🛠 Technical Details
 
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Styling**: Tailwind CSS + Custom CSS (buttons, dark mode)
 - **Data Source**: Live data from Hugging Face
 - **Storage**: Browser localStorage for progress tracking
 - **Deployment**: GitHub Pages compatible
+
+### 📁 Project Structure
+
+```
+Kirundi_Game/
+├── index.html              # Main application file
+├── static/                 # Static assets folder
+│   ├── script.js          # Core JavaScript logic
+│   ├── styles.css         # Main styles
+│   ├── buttons.css        # Button component styles
+│   ├── darkmode.css       # Dark mode theme styles
+│   └── icon.png           # Application logo
+├── french_prompts.txt     # French sentences for Medium mode
+├── README.md              # Documentation
+└── submissions/           # User contribution storage
+```
+
+### 🎨 UI Features
+
+- **Dark Mode**: Smooth theme switching with localStorage persistence
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Modern Components**: Gradient buttons, smooth animations, professional shadows
+- **Accessibility**: Focus rings, ARIA labels, keyboard navigation
 
 ## 💾 Data Format
 
@@ -106,7 +135,15 @@ All downloads and submissions use these formats to ensure compatibility with the
   - A: This should never happen. The app now ensures only one is visible at a time. If you see both, try a hard refresh (Ctrl+Shift+R) or clear your browser cache.
 
 - **Q: How can I report a problem with a Kirundi phrase?**
+
   - A: In Easy Level, click the "Report a problem" button below the Kirundi phrase to submit a correction or flag an issue.
+
+- **Q: How do I enable dark mode?**
+
+  - A: Click the circular button in the top-right corner (next to the language toggle). The moon icon switches to dark mode, and the sun icon switches back to light mode. Your preference is saved automatically.
+
+- **Q: What are AI suggestions in Easy Mode?**
+  - A: When available, the app shows machine-generated French translations for Kirundi phrases. You can approve them with one click or edit them manually if needed.
 
 ### 📞 Support
 

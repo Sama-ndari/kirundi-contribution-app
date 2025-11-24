@@ -95,7 +95,7 @@ Kirundi_Game/
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Modern Components**: Gradient buttons, smooth animations, professional shadows
 - **Accessibility**: Focus rings, ARIA labels, keyboard navigation
-- **Gamification Rank Card**: 
+- **Gamification Rank Card**:
   - Visual progression tracking with emoji-based rank system (🌱 → 👑 → 🦁)
   - Real-time contribution counter with smooth progress bar
   - Next rank milestone indicator with contributions remaining

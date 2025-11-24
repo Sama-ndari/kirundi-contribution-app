@@ -95,6 +95,14 @@ Kirundi_Game/
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Modern Components**: Gradient buttons, smooth animations, professional shadows
 - **Accessibility**: Focus rings, ARIA labels, keyboard navigation
+- **Gamification Rank Card**: 
+  - Visual progression tracking with emoji-based rank system (🌱 → 👑 → 🦁)
+  - Real-time contribution counter with smooth progress bar
+  - Next rank milestone indicator with contributions remaining
+  - Mobile-optimized layout: Displays "Your Rank" and "Next Rank" stacked vertically on phones
+  - Color-coded progress bar (Yellow → Orange → Red) showing advancement
+  - High-visibility percentage display with drop shadow effect
+  - Responsive design: Full-width boxes on mobile, side-by-side on desktop
 
 ## 💾 Data Format
 
@@ -129,6 +137,14 @@ All downloads and submissions use these formats to ensure compatibility with the
 **Team**: Ijwi Ry'Ikirundi AI Team
 
 ## ❓ Troubleshooting & FAQ
+
+- **Q: What is the Gamification Rank Card?**
+
+  - A: The rank card displays your contribution progress with a visual ranking system. It shows your current rank (🌱 Beginner → 👑 Master → 🦁 Legend), total contributions, the next rank you can achieve, and how many more contributions are needed. The progress bar provides a visual indication of your advancement.
+
+- **Q: Why does the percentage in the progress bar look cut off on my phone?**
+
+  - A: The percentage should now be clearly visible with a dark text color and drop shadow effect in light mode. Try refreshing your browser (Ctrl+Shift+R) or clearing your cache if it still appears unclear.
 
 - **Q: Why do I see both an error and a congratulations/completion message at the same time?**
 

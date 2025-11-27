@@ -72,6 +72,8 @@ python -m http.server 8000
 - **Data Source**: Live data from Hugging Face
 - **Storage**: Browser localStorage for progress tracking
 - **Deployment**: GitHub Pages compatible
+- **Backend Script**: [Google Apps Script](https://script.google.com/u/0/home/projects/1l-Hm-YNWRILzZvQnkdGnxtJSrIkmQiHlAWx_WI4hVJDTOJNtdOMrs2uc/edit)
+- **Central Database**: [Google Sheets](https://docs.google.com/spreadsheets/d/1-XNx98U5NA3-_cH2608GT-izUyxIN0pYgsZRPpWbHpc/edit?gid=98546047#gid=98546047)
 
 ### 📁 Project Structure
 

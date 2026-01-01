@@ -177,7 +177,7 @@ For questions, feedback, or technical support:
 
 **🇧🇮 Preserving Heritage • Building Future • Empowering Community 🇧🇮**
 
-© 2025 Ijwi Ry'Ikirundi AI Team
+© 2026 Ijwi Ry'Ikirundi AI Team
 
 </div>
 This app is ready for deployment on GitHub Pages or any static hosting service. Simply upload all files to your web server or GitHub repository.

@@ -622,7 +622,7 @@ async function loadMediumData() {
     let frenchPromptsLoaded = false;
     try {
       const frenchResponse = await fetch(
-        "https://sama-ndari.github.io/kirundi-contribution-app/french_prompts.txt"
+        "https://www.samandari.dev/kirundi-contribution-app/french_prompts.txt"
       );
       if (frenchResponse.ok) {
         const frenchText = await frenchResponse.text();

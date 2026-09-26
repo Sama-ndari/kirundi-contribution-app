@@ -1529,6 +1529,7 @@ function translateInterface() {
       footerEasy: "Easy Level",
       footerMedium: "Medium Level",
       footerHard: "Hard Level",
+      footerWhatsappCommunity: "WhatsApp Community",
       // Easy Level - Live data error
       easyErrorTitle: "Unable to load live data",
       easyErrorMessage:
@@ -1663,6 +1664,7 @@ function translateInterface() {
       footerEasy: "Niveau Facile",
       footerMedium: "Niveau Moyen",
       footerHard: "Niveau Difficile",
+      footerWhatsappCommunity: "Communauté WhatsApp",
       // Easy Level - Live data error
       easyErrorTitle: "Erreur de chargement des données",
       easyErrorMessage:

@@ -1,68 +1,54 @@
-# 🇧🇮 Ijwi ry'Ikirundi AI: Contribution Hub
-
 <div align="center">
-
-<img src="static/icon.png" alt="Kirundi AI Logo" width="80" height="80">
-
-**A web application for collecting Kirundi language contributions to help build AI language models**
-
-[![Hugging Face](https://img.shields.io/badge/🤗-Hugging%20Face-yellow)](https://huggingface.co/datasets/Ijwi-ry-Ikirundi-AI/Kirundi_Open_Speech_Dataset)
-[![Kirundi](https://img.shields.io/badge/Language-Kirundi-green)](https://en.wikipedia.org/wiki/Kirundi)
-
+  <img src="static/icon.png" alt="Ijwi ry'Ikirundi AI" width="120" style="border-radius: 50%;">
 </div>
 
-## 📖 Overview
+# Kirundi Contribution App
 
-The **Ijwi ry'Ikirundi AI Contribution Hub** helps crowdsource Kirundi language data for AI model training. Community members can contribute translations and sentence pairs to preserve and advance the Kirundi language.
+**Ikirundi cacu, Ijwi ryacu!**  
+*Notre langue, notre voix.*
 
-### 🎯 Easy Level: Kirundi to French Translation
+App web pour enrichir le dataset Kirundi — traductions et nouvelles phrases.
 
-- Translate existing Kirundi phrases to French
-- **AI-powered suggestions**: Get machine translation suggestions to approve or edit
-- **Smart workflow**: Approve suggestions with one click or edit manually
-- Live data from Hugging Face dataset
-- Progress tracking with localStorage
-- Downloads as `Kirundi_To_French.csv`
-- **Report/correct Kirundi phrases:** Users can flag and suggest corrections for Kirundi sentences
-- Error and completion messages are always mutually exclusive (never both visible)
-- All error messages default to English
+![Live](https://img.shields.io/badge/🚀_Live-Application-green?style=for-the-badge)![HF](https://img.shields.io/badge/Dataset-Hugging_Face-yellow?style=for-the-badge)
 
-### 🔄 Medium Level: French to Kirundi Translation
+---
 
-- Translate French sentences to Kirundi
-- Duplicate checking against existing database
-- Downloads as `French_To_Kirundi.csv`
-- Error and completion messages are always mutually exclusive
 
-### ✍🏾 Hard Level: Add New Sentences
 
-- Create original Kirundi-French sentence pairs
-- Input validation (both fields required, minimum 4 words recommended)
-- Duplicate checking: prevents submission of Kirundi sentences already in the database
+### À propos
 
-**All levels include:**
+Partie de [Ijwi ry'Ikirundi AI](https://github.com/Ijwi-ry-Ikirundi-AI).  
+Les contributions partent vers Google Sheets, puis sont fusionnées dans le dataset.
 
-- 🌙 **Dark mode toggle**: Switch between light and dark themes with smooth animations
-- 🌐 **Language toggle button** (FR/EN) for all instructions and feedback
-- ⌨️ **Keyboard shortcuts** (Ctrl+Enter to submit, Escape to skip)
-- 📱 **Mobile-responsive design** with modern UI components
-- 🎨 **Professional button designs** with gradients, shadows, and smooth transitions
-- 💾 **Auto-save progress** to prevent data loss
+### Modes
 
-## 🚀 Quick Start
 
-### Option 1: Direct Use
+| Niveau        | Action                                        |
+| ------------- | --------------------------------------------- |
+| **Facile**    | Kirundi → Français (suggestions IA possibles) |
+| **Moyen**     | Français → Kirundi                            |
+| **Difficile** | Ajouter une paire originale KR + FR           |
 
-1. Open `index.html` in your browser
-2. Choose your contribution level
-3. Follow on-screen instructions
 
-### Option 2: Local Server (Recommended)
+Dark mode · FR/EN · mobile · rangs gamifiés.
+
+### Lancer en local
 
 ```bash
-cd Kirundi_Game
 python -m http.server 8000
-# Visit: http://localhost:8000
+# http://localhost:8000
+```
+
+
+
+### Structure
+
+```
+├── index.html
+├── static/                 # JS, CSS, icônes
+├── french_prompts.txt      # Prompts mode Moyen
+├── generate_prompts.py     # Offline : remplir french_prompts.txt
+└── requirements.txt
 ```
 
 ## 🛠 Technical Details
@@ -76,108 +62,30 @@ python -m http.server 8000
 - **Central Database**: [Google Sheets](https://docs.google.com/spreadsheets/d/1-XNx98U5NA3-_cH2608GT-izUyxIN0pYgsZRPpWbHpc/edit?gid=98546047#gid=98546047)
 - **Live Demo**: [Kirundi Contribution App](https://www.samandari.dev/kirundi-contribution-app/)
 
-### 📁 Project Structure
+### Troubleshooting
 
-```
-Kirundi_Game/
-├── index.html              # Main application file
-├── static/                 # Static assets folder
-│   ├── script.js          # Core JavaScript logic
-│   ├── styles.css         # Main styles
-│   ├── buttons.css        # Button component styles
-│   ├── darkmode.css       # Dark mode theme styles
-│   └── icon.png           # Application logo
-├── french_prompts.txt     # French sentences for Medium mode
-├── README.md              # Documentation
-└── submissions/           # User contribution storage
-```
+**Q: What is the Gamification Rank Card?**  
+A: The rank card displays your contribution progress with a visual ranking system. It shows your current rank (🌱 Beginner → 👑 Master → 🦁 Legend), total contributions, the next rank you can achieve, and how many more contributions are needed. The progress bar provides a visual indication of your advancement.
 
-### 🎨 UI Features
+**Q: Why does the percentage in the progress bar look cut off on my phone?**  
+A: The percentage should now be clearly visible with a dark text color and drop shadow effect in light mode. Try refreshing your browser (Ctrl+Shift+R) or clearing your cache if it still appears unclear.
 
-- **Dark Mode**: Smooth theme switching with localStorage persistence
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Modern Components**: Gradient buttons, smooth animations, professional shadows
-- **Accessibility**: Focus rings, ARIA labels, keyboard navigation
-- **Gamification Rank Card**:
-  - Visual progression tracking with emoji-based rank system (🌱 → 👑 → 🦁)
-  - Real-time contribution counter with smooth progress bar
-  - Next rank milestone indicator with contributions remaining
-  - Mobile-optimized layout: Displays "Your Rank" and "Next Rank" stacked vertically on phones
-  - Color-coded progress bar (Yellow → Orange → Red) showing advancement
-  - High-visibility percentage display with drop shadow effect
-  - Responsive design: Full-width boxes on mobile, side-by-side on desktop
+**Q: Why do I see both an error and a congratulations/completion message at the same time?**  
+A: This should never happen. The app now ensures only one is visible at a time. If you see both, try a hard refresh (Ctrl+Shift+R) or clear your browser cache.
 
-## 💾 Data Format
+**Q: How can I report a problem with a Kirundi phrase?**  
+A: In Easy Level, click the "Report a problem" button below the Kirundi phrase to submit a correction or flag an issue.
 
-All CSV files use standardized headers:
+**Q: How do I enable dark mode?**  
+A: Click the circular button in the top-right corner (next to the language toggle). The moon icon switches to dark mode, and the sun icon switches back to light mode. Your preference is saved automatically.
 
-#### Easy Level (Kirundi → French)
+**Q: What are AI suggestions in Easy Mode?**  
+A: When available, the app shows machine-generated French translations for Kirundi phrases. You can approve them with one click or edit them manually if needed.
 
-```csv
-Original_Kirundi,Corrected_Kirundi,French_Translation
-"Muraho, amakuru?","Muraho, amakuru?","Bonjour, comment allez-vous?"
-```
+### Support
 
-#### Medium Level (French → Kirundi)
-
-```csv
-Kirundi_Transcription,French_Translation
-"Ndagukunda cane.","Je t'aime beaucoup."
-```
-
-#### Hard Level (New Sentences)
-
-```csv
-Kirundi_Transcription,French_Translation
-"Ndagukunda cane.","Je t'aime beaucoup."
-```
-
-All downloads and submissions use these formats to ensure compatibility with the central dataset.
-
-## 🫱🏽‍🫲🏿 Contributing
-
-**Contact**: 📱 WhatsApp +257 77 568 903  
-**Team**: Ijwi Ry'Ikirundi AI Team
-
-## ❓ Troubleshooting & FAQ
-
-- **Q: What is the Gamification Rank Card?**
-
-  - A: The rank card displays your contribution progress with a visual ranking system. It shows your current rank (🌱 Beginner → 👑 Master → 🦁 Legend), total contributions, the next rank you can achieve, and how many more contributions are needed. The progress bar provides a visual indication of your advancement.
-
-- **Q: Why does the percentage in the progress bar look cut off on my phone?**
-
-  - A: The percentage should now be clearly visible with a dark text color and drop shadow effect in light mode. Try refreshing your browser (Ctrl+Shift+R) or clearing your cache if it still appears unclear.
-
-- **Q: Why do I see both an error and a congratulations/completion message at the same time?**
-
-  - A: This should never happen. The app now ensures only one is visible at a time. If you see both, try a hard refresh (Ctrl+Shift+R) or clear your browser cache.
-
-- **Q: How can I report a problem with a Kirundi phrase?**
-
-  - A: In Easy Level, click the "Report a problem" button below the Kirundi phrase to submit a correction or flag an issue.
-
-- **Q: How do I enable dark mode?**
-
-  - A: Click the circular button in the top-right corner (next to the language toggle). The moon icon switches to dark mode, and the sun icon switches back to light mode. Your preference is saved automatically.
-
-- **Q: What are AI suggestions in Easy Mode?**
-  - A: When available, the app shows machine-generated French translations for Kirundi phrases. You can approve them with one click or edit them manually if needed.
-
-### 📞 Support
-
-For questions, feedback, or technical support:
-
-- 💬 **WhatsApp**: [+257 77 568 903](https://wa.me/25777568903)
-- 📧 **Email**: Junior_julescesar10@hotmail.com
-
----
-
-<div align="center">
+[WhatsApp](https://wa.me/25777568903) · [Email](mailto:cezaremardini10@gmail.com)
 
 **🇧🇮 Preserving Heritage • Building Future • Empowering Community 🇧🇮**
 
 © 2026 Ijwi Ry'Ikirundi AI Team
-
-</div>
-This app is ready for deployment on GitHub Pages or any static hosting service. Simply upload all files to your web server or GitHub repository.

@@ -152,6 +152,13 @@ function showComingSoon() {
   alert("Hard Level is coming soon! Turiko turabitegura.");
 }
 
+function hideAllModes() {
+  hideElement("main-menu");
+  hideElement("easy-mode");
+  hideElement("medium-mode");
+  hideElement("hard-mode");
+}
+
 function backToMainMenu() {
   hideElement("easy-mode");
   hideElement("medium-mode");
@@ -164,7 +171,7 @@ function backToMainMenu() {
 
 // Easy Mode Functions
 async function initEasyMode() {
-  hideElement("main-menu");
+  hideAllModes();
   showElement("easy-mode");
   showElement("loading-easy");
   hideElement("game-ui");
@@ -578,7 +585,7 @@ function resetCorrectionBox() {
 // Medium Mode Functions
 async function initMediumMode() {
   console.log("initMediumMode called");
-  hideElement("main-menu");
+  hideAllModes();
   showElement("medium-mode");
   console.log("Shown medium-mode");
   showElement("loading-medium");
@@ -857,10 +864,11 @@ function showSuccessOverlay(message) {
   // Confetti celebration with Burundian flag colors (Green, Red, White)
   if (typeof confetti !== "undefined") {
     confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#228B22", "#CE1126", "#FFFFFF"],
+      particleCount: 48,
+      spread: 55,
+      origin: { y: 0.65 },
+      colors: ["#1b7a45", "#c41e3a", "#f3f0e8"],
+      disableForReducedMotion: true,
     });
   }
 }
@@ -966,7 +974,7 @@ async function submitMediumTranslations() {
 
 // Hard Level Submission - NOW FIXED
 async function initHardMode() {
-  hideElement("main-menu");
+  hideAllModes();
   showElement("hard-mode");
   resetHardMode();
 
@@ -1389,16 +1397,11 @@ function toggleLanguage() {
 }
 
 function updateLanguageUI() {
-  const flagElement = document.getElementById("language-flag");
   const textElement = document.getElementById("language-text");
+  if (!textElement) return;
 
-  if (currentLanguage === "fr") {
-    flagElement.textContent = "🇬🇧";
-    textElement.textContent = "EN";
-  } else {
-    flagElement.textContent = "🇫🇷";
-    textElement.textContent = "FR";
-  }
+  // Button shows the language you can switch TO
+  textElement.textContent = currentLanguage === "fr" ? "EN" : "FR";
 }
 
 function translateInterface() {
@@ -1436,23 +1439,23 @@ function translateInterface() {
       title: "Ijwi ry'Ikirundi AI",
       subtitle: "Contribution Hub",
       mission:
-        "Help us build the future of Kirundi language AI through community collaboration",
+        "Help us build the future of Kirundi language AI through community collaboration.",
       preserving: "Preserving Heritage",
       building: "Building Future",
       empowering: "Empowering Community",
-      easyLevel: "Easy Level: Translate Kirundi To French",
-      easyDesc: "Translate Kirundi sentences to French",
-      mediumLevel: "Medium Level: Translate French to Kirundi",
-      mediumDesc: "Translate French sentences to Kirundi",
-      hardLevel: "Hard Level: Add New Sentences",
-      hardDesc: "Create original Kirundi-French sentence pairs",
+      easyLevel: "Easy Level",
+      easyDesc: "Translate Kirundi → French",
+      mediumLevel: "Medium Level",
+      mediumDesc: "Translate French → Kirundi",
+      hardLevel: "Hard Level",
+      hardDesc: "Add original sentence pairs",
       skipHelp: "Don't know the answer?",
       skipText: 'No problem! Click "Skip" or press',
       skipAction: "to move to the next",
       // Main menu
-      chooseLevel: "Choose Your Contribution Level",
+      chooseLevel: "Choose your level",
       selectType:
-        "Select the type of contribution you'd like to make to help build our Kirundi AI dataset",
+        "Three ways to grow the Kirundi dataset. Start at the level that suits you.",
       // Game interface
       backToMenu: "← Back to Menu",
       skip: "⏭️ Skip",
@@ -1518,8 +1521,14 @@ function translateInterface() {
       // Footer
       footerDescription:
         "Preserving and advancing the Kirundi language through artificial intelligence and community collaboration.",
-      footerBuilt: "Built with ❤️ for the Kirundi community",
+      footerBuilt: "Ikirundi cacu, Ijwi ryacu.",
       poweredBy: "Powered by Ijwi Ry'Ikirundi AI Team",
+      footerColProject: "Project",
+      footerColContribute: "Contribute",
+      footerColContact: "Contact",
+      footerEasy: "Easy Level",
+      footerMedium: "Medium Level",
+      footerHard: "Hard Level",
       // Easy Level - Live data error
       easyErrorTitle: "Unable to load live data",
       easyErrorMessage:
@@ -1545,6 +1554,7 @@ function translateInterface() {
       nextRank: "Next Rank",
       toGo: "to go",
       contributions: "Contributions",
+      communityBadge: "Community-Built AI",
     },
     fr: {
       supportBtn: "Assistance",
@@ -1560,23 +1570,23 @@ function translateInterface() {
       title: "Ijwi ry'Ikirundi AI",
       subtitle: "Hub de Contribution",
       mission:
-        "Aidez-nous à construire l'avenir de l'IA en langue Kirundi grâce à la collaboration communautaire",
+        "Aidez-nous à construire l'avenir de l'IA en langue Kirundi grâce à la collaboration communautaire.",
       preserving: "Préserver l'Héritage",
       building: "Construire l'Avenir",
       empowering: "Autonomiser la Communauté",
-      easyLevel: "Niveau Facile: Traduire Kirundi vers Français",
-      easyDesc: "Traduisez les phrases kirundi en français",
-      mediumLevel: "Niveau Moyen: Traduire Français vers Kirundi",
-      mediumDesc: "Traduisez les phrases françaises en kirundi",
-      hardLevel: "Niveau Difficile: Ajouter de Nouvelles Phrases",
-      hardDesc: "Créez des paires de phrases kirundi-français originales",
+      easyLevel: "Niveau Facile",
+      easyDesc: "Traduire Kirundi → Français",
+      mediumLevel: "Niveau Moyen",
+      mediumDesc: "Traduire Français → Kirundi",
+      hardLevel: "Niveau Difficile",
+      hardDesc: "Ajouter des paires originales",
       skipHelp: "Vous ne connaissez pas la réponse?",
       skipText: 'Pas de problème! Cliquez sur "Ignorer" ou appuyez sur',
       skipAction: "pour passer à la",
       // Main menu
-      chooseLevel: "Choisissez Votre Niveau de Contribution",
+      chooseLevel: "Choisissez votre niveau",
       selectType:
-        "Sélectionnez le type de contribution que vous souhaitez apporter pour aider à construire notre jeu de données Kirundi IA",
+        "Trois façons d'enrichir le dataset Kirundi. Commencez au niveau qui vous convient.",
       // Game interface
       backToMenu: "← Retour au Menu",
       skip: "⏭️ Ignorer",
@@ -1645,8 +1655,14 @@ function translateInterface() {
       // Footer
       footerDescription:
         "Préserver et faire progresser la langue Kirundi grâce à l'intelligence artificielle et à la collaboration communautaire.",
-      footerBuilt: "Construit avec ❤️ pour la communauté Kirundi",
+      footerBuilt: "Ikirundi cacu, Ijwi ryacu.",
       poweredBy: "Propulsé par l'Équipe Ijwi Ry'Ikirundi AI",
+      footerColProject: "Projet",
+      footerColContribute: "Contribuer",
+      footerColContact: "Contact",
+      footerEasy: "Niveau Facile",
+      footerMedium: "Niveau Moyen",
+      footerHard: "Niveau Difficile",
       // Easy Level - Live data error
       easyErrorTitle: "Erreur de chargement des données",
       easyErrorMessage:
@@ -1674,6 +1690,7 @@ function translateInterface() {
       nextRank: "Prochain Rang",
       toGo: "restants",
       contributions: "Contributions",
+      communityBadge: "IA construite par la communauté",
     },
   };
 
@@ -1757,10 +1774,10 @@ function translateInterface() {
   if (poweredByElement) {
     if (currentLanguage === "fr") {
       poweredByElement.innerHTML =
-        "Propulsé par <span class=\"font-poppins text-green-400 font-bold text-lg\">l'Équipe Ijwi Ry'Ikirundi AI</span>";
+        'Propulsé par <span class="footer-powered-em">l\'Équipe Ijwi Ry\'Ikirundi AI</span>';
     } else {
       poweredByElement.innerHTML =
-        'Powered by <span class="font-poppins text-green-400 font-bold text-lg">Ijwi Ry\'Ikirundi AI Team</span>';
+        'Powered by <span class="footer-powered-em">Ijwi Ry\'Ikirundi AI Team</span>';
     }
   }
 
@@ -2219,43 +2236,17 @@ function updateGamification() {
   // Update Timeline UI
   const timelineSteps = document.querySelectorAll(".rank-step");
   timelineSteps.forEach((step) => {
-    const min = parseInt(step.getAttribute("data-min"));
-    const circle = step.querySelector("div");
+    const min = parseInt(step.getAttribute("data-min"), 10);
+    step.classList.remove("is-active", "is-done", "is-locked");
 
-    if (circle) {
-      // Reset base classes
-      circle.className =
-        "w-9 h-9 rounded-full flex items-center justify-center text-lg transition-all duration-300 ring-4 ring-white dark:ring-gray-800 z-10 shadow-sm group-hover/step:scale-110";
-
-      if (totalContributions >= min) {
-        // Completed or Active
-        if (min === currentRank.min) {
-          // Active (Current)
-          circle.classList.add(
-            "bg-green-500",
-            "text-white",
-            "scale-110",
-            "ring-green-100",
-            "dark:ring-green-900"
-          );
-        } else {
-          // Completed (Past)
-          circle.classList.add(
-            "bg-green-200",
-            "text-green-700",
-            "dark:bg-green-900",
-            "dark:text-green-300"
-          );
-        }
+    if (totalContributions >= min) {
+      if (min === currentRank.min) {
+        step.classList.add("is-active");
       } else {
-        // Locked (Future)
-        circle.classList.add(
-          "bg-gray-200",
-          "text-gray-400",
-          "dark:bg-gray-700",
-          "dark:text-gray-500"
-        );
+        step.classList.add("is-done");
       }
+    } else {
+      step.classList.add("is-locked");
     }
   });
 }

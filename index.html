@@ -6,147 +6,80 @@
     <title>Ijwi ry'Ikirundi AI: Contribution Hub</title>
 
     <link href="static/favicon.ico" rel="icon">
-    <!-- Google Fonts -->
+    <!-- Editorial Burundi fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Dark mode is a manual toggle (see toggleDarkMode in script.js), not
+      // the OS preference - without this, Tailwind's `dark:` utilities
+      // silently follow prefers-color-scheme instead of the html.dark class.
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="static/tokens.css" />
     <link rel="stylesheet" href="static/styles.css" />
     <link rel="stylesheet" href="static/buttons.css" />
-    <link rel="stylesheet" href="static/darkmode.css" />
     <link rel="stylesheet" href="static/theme.css" />
+    <link rel="stylesheet" href="static/dark-theme.css" />
   </head>
-  <body class="bg-gradient-to-br from-blue-50 to-green-50 min-h-screen">
+  <body class="min-h-screen">
     <!-- Header -->
-    <header class="relative overflow-hidden">
-      <!-- Burundian Flag Gradient Background -->
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-red-600 via-white to-green-600 opacity-10"
-      ></div>
-      <div
-        class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-red-50"
-      ></div>
-
-      <!-- Main Header Content -->
-      <div
-        class="relative bg-white/95 backdrop-blur-sm shadow-2xl border-b-4 border-gradient"
-      >
-        <div class="container mx-auto px-4 py-6 md:py-8">
-          <!-- Language & Dark Mode Toggle Buttons -->
-          <div class="absolute top-4 right-4 flex items-center gap-2">
-            <!-- Dark Mode Toggle - Compact Circular Button -->
+    <header class="site-header">
+      <div class="header-bar">
+        <div class="container mx-auto px-4 header-bar-inner">
+          <div class="header-toggles" role="group" aria-label="Display controls">
             <button
               id="dark-mode-toggle"
               onclick="toggleDarkMode()"
-              class="group relative w-9 h-9 rounded-full bg-white dark:bg-gray-700 hover:shadow-lg transition-all duration-300 flex items-center justify-center border border-gray-300 dark:border-gray-600 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-yellow-400"
+              class="header-toggle"
               aria-label="Toggle dark mode"
+              type="button"
             >
-              <!-- Sun Icon  (Light Mode) -->
-              <svg 
-                id="theme-toggle-sun" 
-                class="w-5 h-5 text-yellow-500 transition-all duration-300 absolute"
-                fill="currentColor" 
-                viewBox="0 0 20 20"
-              >
-                <path 
-                  fill-rule="evenodd" 
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" 
-                  clip-rule="evenodd"
-                />
+              <svg id="theme-toggle-sun" class="header-toggle-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
               </svg>
-              
-              <!-- Moon Icon (Dark Mode) -->
-              <svg 
-                id="theme-toggle-moon" 
-                class="w-5 h-5 text-indigo-400 transition-all duration-300 absolute"
-                fill="currentColor" 
-                viewBox="0 0 20 20"
-              >
+              <svg id="theme-toggle-moon" class="header-toggle-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
               </svg>
             </button>
-            
-            <!-- Language Toggle -->
+            <span class="header-toggle-sep" aria-hidden="true">·</span>
             <button
               id="language-toggle"
               onclick="toggleLanguage()"
-              class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2 shadow-lg"
+              class="header-toggle header-toggle-lang"
+              type="button"
+              aria-label="Switch language"
             >
-              <span id="language-flag">🇬🇧</span>
               <span id="language-text">EN</span>
             </button>
-          </div>
-
-          <!-- Logo and Title Section -->
-          <div
-            class="flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-6 mb-4"
-          >
-            <!-- Logo -->
-            <div class="flex-shrink-0">
-              <img
-                src="static/icon.png"
-                alt="Ijwi ry'Ikirundi AI Logo"
-                class="w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg ring-3 ring-green-500/30 hover:ring-green-500/50 transition-all duration-300 transform hover:scale-105"
-              />
-            </div>
-
-            <!-- Title and Subtitle -->
-            <div class="text-center md:text-left">
-              <h1
-                class="font-poppins text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-green-600 via-red-600 to-green-700 bg-clip-text text-transparent leading-tight"
-              >
-                Ijwi ry'Ikirundi AI
-              </h1>
-              <div
-                id="subtitle"
-                class="font-poppins text-base md:text-lg font-semibold text-gray-700 mt-1"
-              >
-                Hub de Contribution
-              </div>
-            </div>
-          </div>
-
-          <!-- Mission Statement -->
-          <div class="text-center max-w-3xl mx-auto">
-            <p
-              id="mission-text"
-              class="font-inter text-base md:text-lg text-gray-700 leading-relaxed mb-3"
-            >
-              Aidez-nous à construire l'avenir de l'IA en
-              <span class="font-semibold text-green-700">langue Kirundi</span>
-              grâce à la collaboration communautaire
-            </p>
-            <div
-              class="flex items-center justify-center space-x-2 text-xs md:text-sm text-gray-600"
-            >
-              <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-              <span id="preserving-text" class="font-medium"
-                >Préserver l'Héritage</span
-              >
-              <span
-                class="w-1.5 h-1.5 bg-white border-2 border-gray-400 rounded-full"
-              ></span>
-              <span id="building-text" class="font-medium"
-                >Construire l'Avenir</span
-              >
-              <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-              <span id="empowering-text" class="font-medium"
-                >Autonomiser la Communauté</span
-              >
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- Decorative Bottom Border -->
-      <div
-        class="h-1 bg-gradient-to-r from-red-500 via-white to-green-500"
-      ></div>
+      <div class="header-hero">
+        <div class="container mx-auto px-4 header-hero-inner">
+          <p id="subtitle" class="hero-kicker font-inter">Hub de Contribution</p>
+          <h1 class="font-poppins hero-title">Ijwi ry'Ikirundi AI</h1>
+          <p class="hero-motto font-poppins">Ikirundi cacu, Ijwi ryacu.</p>
+          <p id="mission-text" class="font-inter hero-mission">
+            Aidez-nous à construire l'avenir de l'IA en langue Kirundi grâce à la collaboration communautaire.
+          </p>
+          <ul class="hero-links font-inter">
+            <li id="preserving-text">Préserver l'Héritage</li>
+            <li id="building-text">Construire l'Avenir</li>
+            <li id="empowering-text">Autonomiser la Communauté</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flag-stripe" aria-hidden="true"></div>
     </header>
     <!-- Support / Chat Popup Button and Modal -->
     <button
@@ -222,7 +155,7 @@
         </a>
         <a
           href="mailto:Junior_julescesar10@hotmail.com"
-          class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-colors justify-center"
+          class="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg transition-colors justify-center"
           data-translate="emailBtn"
         >
           Email
@@ -241,170 +174,84 @@
     <div class="container mx-auto px-4 py-8">
       <!-- Main Menu -->
       <div id="main-menu" class="fade-in">
-        <div class="max-w-4xl mx-auto">
-          <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-10 card-modern">
-            <h2
-              class="font-poppins text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4"
-              data-translate="chooseLevel"
-            >
-              Choisissez Votre Niveau de Contribution
-            </h2>
-            <p
-              class="font-inter text-center text-gray-600 mb-8 md:mb-12 text-base md:text-lg max-w-2xl mx-auto"
-              data-translate="selectType"
-            >
-              Sélectionnez le type de contribution que vous souhaitez apporter
-              pour aider à construire notre jeu de données Kirundi IA
-            </p>
+        <div class="max-w-5xl mx-auto">
+          <div class="menu-panel">
+            <div class="menu-intro">
+              <h2 class="font-poppins menu-title" data-translate="chooseLevel">
+                Choisissez votre niveau
+              </h2>
+              <p class="font-inter menu-lead" data-translate="selectType">
+                Trois façons d'enrichir le dataset Kirundi. Commencez au niveau qui vous convient.
+              </p>
+            </div>
 
-            <!-- Gamification Rank Card (Advanced) -->
-            <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 mb-8 shadow-xl max-w-2xl mx-auto relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
-              <!-- Background decoration -->
-              <div class="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-yellow-100 dark:bg-yellow-900/30 rounded-full opacity-50 blur-2xl group-hover:scale-110 transition-transform duration-700"></div>
-              
-              <div class="relative z-10">
-                <div class="flex flex-col md:flex-row items-center justify-between mb-6">
-                    <div class="text-center md:text-left mb-4 md:mb-0">
-                        <p class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider font-bold mb-1" data-translate="yourRank">Votre Rang / Iteka Ryawe</p>
-                        <div class="flex items-center justify-center md:justify-start gap-3">
-                            <div class="text-5xl filter drop-shadow-md animate-bounce-slow" id="user-rank-icon">🌱</div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight" id="user-rank-title">Inyuka (Beginner)</h3>
-                                <p class="text-sm text-yellow-600 dark:text-yellow-400 font-medium">
-                                    <span id="total-contribution-count" class="text-lg font-bold">0</span> <span data-translate="contributions">Contributions</span>
-                                </p>
-                            </div>
-                        </div>
+            <!-- Rank -->
+            <div class="rank-card">
+              <div class="rank-card-top">
+                <div class="rank-current">
+                  <p class="rank-label" data-translate="yourRank">Votre Rang / Iteka Ryawe</p>
+                  <div class="rank-current-row">
+                    <span class="rank-emoji" id="user-rank-icon" aria-hidden="true">🌱</span>
+                    <div>
+                      <h3 class="font-poppins rank-name" id="user-rank-title">Inyuka (Beginner)</h3>
+                      <p class="rank-count">
+                        <span id="total-contribution-count">0</span>
+                        <span data-translate="contributions">Contributions</span>
+                      </p>
                     </div>
-                    
-                    <!-- Next Rank Info -->
-                    <div class="w-full md:w-auto order-2 md:order-none text-center md:text-right bg-blue-50 dark:bg-gray-700/50 rounded-lg p-4 md:p-3 border border-blue-200 dark:border-gray-600">
-                        <div class="flex flex-col md:flex-col items-center md:items-end justify-center md:justify-end gap-1 md:gap-0">
-                            <div class="flex items-center justify-center md:block gap-2 md:gap-0">
-                                <p class="text-xs text-gray-600 dark:text-gray-400 uppercase font-semibold" data-translate="nextRank">Prochain Rang:</p>
-                                <div class="text-sm font-bold text-blue-700 dark:text-gray-200 md:mb-1" id="next-rank-title">Umukozi</div>
-                            </div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400"><span id="contributions-left" class="font-bold text-blue-600 dark:text-blue-400">10</span> <span data-translate="toGo">restants</span></div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+                <div class="rank-next">
+                  <p class="rank-label" data-translate="nextRank">Prochain rang</p>
+                  <p class="rank-next-name" id="next-rank-title">Umukozi</p>
+                  <p class="rank-next-left">
+                    <span id="contributions-left">10</span>
+                    <span data-translate="toGo">restants</span>
+                    · <span id="progress-percentage">0%</span>
+                  </p>
+                </div>
+              </div>
 
-                <!-- Progress Bar -->
-                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 mb-8 overflow-hidden shadow-inner relative">
-                    <div id="rank-progress-bar" class="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 h-4 rounded-full transition-all duration-1000 ease-out relative" style="width: 0%">
-                        <div class="absolute top-0 left-0 w-full h-full bg-white opacity-20 animate-pulse"></div>
-                    </div>
-                    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center text-[10px] font-bold text-gray-900 dark:text-gray-200 pointer-events-none drop-shadow-md">
-                        <span id="progress-percentage">0%</span>
-                    </div>
-                </div>
+              <div class="rank-bar-track" aria-hidden="true">
+                <div id="rank-progress-bar" class="rank-bar-fill" style="width: 0%"></div>
+              </div>
 
-                <!-- Ranks Timeline -->
-                <div class="relative px-2">
-                    <!-- Connecting Line -->
-                    <div class="absolute top-4 left-4 right-4 h-1 bg-gray-300 dark:bg-gray-700 -z-10 rounded"></div>
-                    
-                    <div class="flex justify-between items-start">
-                        <!-- Rank 1 -->
-                        <div class="flex flex-col items-center gap-2 rank-step group/step" data-min="0">
-                            <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg transition-all duration-300 ring-4 ring-white dark:ring-gray-800 z-10 shadow-sm group-hover/step:scale-110">🌱</div>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase mt-1">0</span>
-                        </div>
-                        <!-- Rank 2 -->
-                        <div class="flex flex-col items-center gap-2 rank-step group/step" data-min="10">
-                            <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg transition-all duration-300 ring-4 ring-white dark:ring-gray-800 z-10 shadow-sm group-hover/step:scale-110">🔨</div>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase mt-1">10</span>
-                        </div>
-                        <!-- Rank 3 -->
-                        <div class="flex flex-col items-center gap-2 rank-step group/step" data-min="50">
-                            <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg transition-all duration-300 ring-4 ring-white dark:ring-gray-800 z-10 shadow-sm group-hover/step:scale-110">🚀</div>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase mt-1">50</span>
-                        </div>
-                        <!-- Rank 4 -->
-                        <div class="flex flex-col items-center gap-2 rank-step group/step" data-min="100">
-                            <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg transition-all duration-300 ring-4 ring-white dark:ring-gray-800 z-10 shadow-sm group-hover/step:scale-110">⭐</div>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase mt-1">100</span>
-                        </div>
-                        <!-- Rank 5 -->
-                        <div class="flex flex-col items-center gap-2 rank-step group/step" data-min="500">
-                            <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg transition-all duration-300 ring-4 ring-white dark:ring-gray-800 z-10 shadow-sm group-hover/step:scale-110">👑</div>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase mt-1">500</span>
-                        </div>
-                        <!-- Rank 6 -->
-                        <div class="flex flex-col items-center gap-2 rank-step group/step" data-min="1000">
-                            <div class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg transition-all duration-300 ring-4 ring-white dark:ring-gray-800 z-10 shadow-sm group-hover/step:scale-110">🦁</div>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase mt-1">1K</span>
-                        </div>
-                    </div>
-                </div>
+              <div class="rank-milestones">
+                <div class="rank-step" data-min="0"><span class="rank-step-icon">🌱</span><span class="rank-step-n">0</span></div>
+                <div class="rank-step" data-min="10"><span class="rank-step-icon">🔨</span><span class="rank-step-n">10</span></div>
+                <div class="rank-step" data-min="50"><span class="rank-step-icon">🚀</span><span class="rank-step-n">50</span></div>
+                <div class="rank-step" data-min="100"><span class="rank-step-icon">⭐</span><span class="rank-step-n">100</span></div>
+                <div class="rank-step" data-min="500"><span class="rank-step-icon">👑</span><span class="rank-step-n">500</span></div>
+                <div class="rank-step" data-min="1000"><span class="rank-step-icon">🦁</span><span class="rank-step-n">1K</span></div>
               </div>
             </div>
 
-            <div class="grid gap-6 md:gap-8">
-              <!-- Easy Level Button -->
-              <button
-                onclick="initEasyMode()"
-                class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group"
-              >
-                <div
-                  class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"
-                >
-                  <span class="text-3xl md:text-4xl">📝</span>
-                  <div class="text-center md:text-left">
-                    <div class="font-poppins font-bold level-button-text">
-                      Niveau Facile: Traduire Kirundi vers Français
-                    </div>
-                    <p
-                      class="font-inter text-green-100 text-sm md:text-base mt-1 opacity-90 level-description"
-                    >
-                      Traduisez les phrases kirundi en français
-                    </p>
-                  </div>
-                </div>
+            <div class="level-cards" role="list">
+              <button type="button" onclick="initEasyMode()" class="level-card level-card--easy" role="listitem">
+                <span class="level-card-icon" aria-hidden="true">📝</span>
+                <span class="level-card-body">
+                  <span class="font-poppins level-card-title level-button-text">Niveau Facile</span>
+                  <span class="font-inter level-card-desc level-description">Traduire Kirundi → Français</span>
+                </span>
+                <span class="level-card-cta" aria-hidden="true">→</span>
               </button>
 
-              <!-- Medium Level Button -->
-              <button
-                onclick="initMediumMode()"
-                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group"
-              >
-                <div
-                  class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"
-                >
-                  <span class="text-3xl md:text-4xl">🔄</span>
-                  <div class="text-center md:text-left">
-                    <div class="font-poppins font-bold level-button-text">
-                      Niveau Moyen: Traduire Français vers Kirundi
-                    </div>
-                    <p
-                      class="font-inter text-blue-100 text-sm md:text-base mt-1 opacity-90 level-description"
-                    >
-                      Traduisez les phrases françaises en kirundi
-                    </p>
-                  </div>
-                </div>
+              <button type="button" onclick="initMediumMode()" class="level-card level-card--medium" role="listitem">
+                <span class="level-card-icon" aria-hidden="true">🔄</span>
+                <span class="level-card-body">
+                  <span class="font-poppins level-card-title level-button-text">Niveau Moyen</span>
+                  <span class="font-inter level-card-desc level-description">Traduire Français → Kirundi</span>
+                </span>
+                <span class="level-card-cta" aria-hidden="true">→</span>
               </button>
 
-              <!-- Hard Level Button -->
-              <button
-                onclick="initHardMode()"
-                class="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-6 md:py-8 px-6 md:px-8 rounded-xl text-lg md:text-xl btn-modern group"
-              >
-                <div
-                  class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"
-                >
-                  <span class="text-3xl md:text-4xl">✍🏾</span>
-                  <div class="text-center md:text-left">
-                    <div class="font-poppins font-bold level-button-text">
-                      Niveau Difficile: Ajouter de Nouvelles Phrases
-                    </div>
-                    <p
-                      class="font-inter text-purple-100 text-sm md:text-base mt-1 opacity-90 level-description"
-                    >
-                      Créez des paires de phrases kirundi-français originales
-                    </p>
-                  </div>
-                </div>
+              <button type="button" onclick="initHardMode()" class="level-card level-card--hard" role="listitem">
+                <span class="level-card-icon" aria-hidden="true">✍🏾</span>
+                <span class="level-card-body">
+                  <span class="font-poppins level-card-title level-button-text">Niveau Difficile</span>
+                  <span class="font-inter level-card-desc level-description">Ajouter des paires originales</span>
+                </span>
+                <span class="level-card-cta" aria-hidden="true">→</span>
               </button>
             </div>
           </div>
@@ -501,7 +348,7 @@
                 >
                 <div
                   id="kirundi-phrase"
-                  class="bg-green-50 border-2 border-green-200 rounded-lg p-4 text-2xl font-medium text-gray-800 min-h-[80px] flex items-center"
+                  class="kirundi-phrase p-4 text-2xl font-medium min-h-[80px] flex items-center"
                 >
                   <!-- Phrase will be inserted here -->
                 </div>
@@ -718,7 +565,7 @@
             <div id="easy-submit-container" class="mb-6 hidden">
               <button
                 onclick="showCompletion()"
-                class="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-6 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                class="btn-primary-action w-full text-white font-bold py-4 px-6 rounded-xl text-lg flex items-center justify-center gap-2"
               >
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
@@ -743,7 +590,7 @@
               <div class="mb-6">
                 <button
                   id="submit-easy-button"
-                  class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors pulse-button"
+                  class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-xl pulse-button"
                   onclick="submitEasyTranslations()"
                 >
                   Soumettre les traductions
@@ -949,7 +796,7 @@
             <div id="medium-submit-container" class="mb-6 hidden">
               <button
                 onclick="completeMediumMode()"
-                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                class="btn-primary-action w-full text-white font-bold py-4 px-6 rounded-xl text-lg flex items-center justify-center gap-2"
               >
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
@@ -973,7 +820,7 @@
               <div class="mb-6">
                 <button
                   id="submit-medium-button"
-                  class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors pulse-button"
+                  class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-xl pulse-button"
                   onclick="submitMediumTranslations()"
                 >
                   Soumettre les traductions
@@ -1103,7 +950,7 @@
               <button
                 id="submit-hard-button"
                 onclick="submitHardSentences()"
-                class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors pulse-button disabled:bg-gray-400"
+                class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-xl pulse-button"
                 disabled
               >
                 Soumettre les phrases
@@ -1120,7 +967,7 @@
       class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden"
     >
       <div
-        class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center animate-fade-in"
+        class="surface-card-panel rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center animate-fade-in"
       >
         <div class="flex justify-center mb-4">
           <div class="bg-green-100 rounded-full p-4">
@@ -1148,7 +995,7 @@
         <button
           id="success-main-menu-btn"
           onclick="closeSuccessOverlay()"
-          class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors shadow-lg"
+          class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-lg"
         >
           Retour au Menu Principal
         </button>
@@ -1156,69 +1003,52 @@
     </div>
 
     <!-- Footer -->
-    <footer
-      class="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-12 mt-16 overflow-hidden"
-    >
-      <!-- Decorative Top Border -->
-      <div
-        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-white to-green-500"
-      ></div>
-
-      <!-- Background Pattern -->
-      <div class="absolute inset-0 opacity-5">
-        <div
-          class="absolute top-4 left-4 w-8 h-8 border-2 border-red-500 rounded-full"
-        ></div>
-        <div
-          class="absolute top-8 right-8 w-6 h-6 border-2 border-green-500 rounded-full"
-        ></div>
-        <div
-          class="absolute bottom-4 left-1/4 w-4 h-4 border-2 border-white rounded-full"
-        ></div>
-        <div
-          class="absolute bottom-8 right-1/3 w-5 h-5 border-2 border-red-500 rounded-full"
-        ></div>
-      </div>
-
-      <div class="container mx-auto px-4 relative">
-        <div class="text-center">
-          <div class="mb-6">
-            <h3
-              class="font-poppins text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-green-400 via-white to-red-400 bg-clip-text text-transparent"
-            >
-              🇧🇮 Ijwi ry'Ikirundi AI
-            </h3>
-            <p
-              id="footer-description"
-              class="font-inter text-gray-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed"
-            >
+    <footer class="site-footer">
+      <div class="flag-stripe" aria-hidden="true"></div>
+      <div class="container mx-auto px-4 footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand-col">
+            <p class="font-poppins footer-brand-title">Ijwi ry'Ikirundi AI</p>
+            <p id="footer-description" class="font-inter footer-desc">
               Préserver et faire progresser la langue Kirundi grâce à
               l'intelligence artificielle et à la collaboration communautaire.
             </p>
           </div>
-
-          <div class="border-t border-gray-600 pt-6">
-            <p
-              id="powered-by"
-              class="font-inter text-gray-300 text-base md:text-lg mb-2"
-            >
-              Propulsé par
-              <span class="font-poppins text-green-400 font-bold text-lg"
-                >l'Équipe Ijwi Ry'Ikirundi AI</span
-              >
-            </p>
-            <div
-              class="flex items-center justify-center space-x-3 text-sm text-gray-400"
-            >
-              <span>© <span id="current-year">2025</span></span>
-              <span class="w-1 h-1 bg-red-500 rounded-full"></span>
-              <span id="footer-built"
-                >Construit avec ❤️ pour la communauté Kirundi</span
-              >
-              <span class="w-1 h-1 bg-green-500 rounded-full"></span>
-              <span>🇧🇮 Burundi</span>
-            </div>
+          <div>
+            <p class="footer-col-title" data-translate="footerColProject">Projet</p>
+            <ul class="footer-links">
+              <li><a href="https://github.com/Ijwi-ry-Ikirundi-AI" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="https://huggingface.co/Ijwi-ry-Ikirundi-AI" target="_blank" rel="noopener">Hugging Face</a></li>
+              <li><a href="https://huggingface.co/datasets/Ijwi-ry-Ikirundi-AI/Kirundi_Open_Speech_Dataset" target="_blank" rel="noopener">Dataset</a></li>
+            </ul>
           </div>
+          <div>
+            <p class="footer-col-title" data-translate="footerColContribute">Contribuer</p>
+            <ul class="footer-links">
+              <li><button type="button" class="footer-link-btn" onclick="initEasyMode()" data-translate="footerEasy">Niveau Facile</button></li>
+              <li><button type="button" class="footer-link-btn" onclick="initMediumMode()" data-translate="footerMedium">Niveau Moyen</button></li>
+              <li><button type="button" class="footer-link-btn" onclick="initHardMode()" data-translate="footerHard">Niveau Difficile</button></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-col-title" data-translate="footerColContact">Contact</p>
+            <ul class="footer-links">
+              <li><a href="https://wa.me/25777568903" target="_blank" rel="noopener">WhatsApp</a></li>
+              <li><a href="mailto:cezaremardini10@gmail.com">Email</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p id="powered-by" class="font-inter footer-powered">
+            Propulsé par <span class="footer-powered-em">l'Équipe Ijwi Ry'Ikirundi AI</span>
+          </p>
+          <p class="footer-meta">
+            <span>© <span id="current-year">2026</span></span>
+            <span class="footer-sep">·</span>
+            <span id="footer-built">Ikirundi cacu, Ijwi ryacu.</span>
+            <span class="footer-sep">·</span>
+            <span>Burundi</span>
+          </p>
         </div>
       </div>
     </footer>

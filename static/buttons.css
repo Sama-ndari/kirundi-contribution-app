@@ -1,87 +1,75 @@
-/* Enhanced Button Styles for Kirundi Contribution App */
+/* Flat brand actions - Editorial Burundi */
 
-/* Primary Action Buttons (Submit, Approve) */
 .btn-primary-action {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #1b7a45;
+  box-shadow: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-primary-action:hover {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-    transform: translateY(-2px);
+  background: #146338;
+  transform: translateY(-1px);
 }
 
 .btn-primary-action:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  transform: translateY(0);
 }
 
-/* Secondary Action Buttons (Edit, Skip) */
 .btn-secondary-action {
-    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-    box-shadow: 0 4px 14px rgba(107, 114, 128, 0.3);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #3d4a44;
+  box-shadow: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-secondary-action:hover {
-    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
-    box-shadow: 0 6px 20px rgba(107, 114, 128, 0.4);
-    transform: translateY(-2px);
+  background: #1a2420;
+  transform: translateY(-1px);
 }
 
 .btn-secondary-action:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(107, 114, 128, 0.2);
+  transform: translateY(0);
 }
 
-/* Info/Edit Buttons (Blue) */
 .btn-info-action {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #1a2420;
+  box-shadow: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-info-action:hover {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-    transform: translateY(-2px);
+  background: #3d4a44;
+  transform: translateY(-1px);
 }
 
 .btn-info-action:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  transform: translateY(0);
 }
 
-/* Button Icons */
 .btn-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    font-size: 1.1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 1.1em;
 }
 
-/* Button Loading State */
 .btn-loading {
-    opacity: 0.7;
-    cursor: not-allowed;
-    pointer-events: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-/* Button Disabled State */
 button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
-/* Responsive button sizing */
-@media (max-width: 640px) {
-    .btn-responsive {
-        width: 100%;
-        padding: 1rem 1.5rem !important;
-    }
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary-action:hover,
+  .btn-secondary-action:hover,
+  .btn-info-action:hover {
+    transform: none;
+  }
 }

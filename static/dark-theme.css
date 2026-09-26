@@ -1,0 +1,121 @@
+/* ==========================================================================
+   Dark mode - semantic boxes
+   Single source of truth for .dark overrides (replaces the old darkmode.css,
+   which fought these tokens: `.dark body` has higher specificity than the
+   plain `body` rule in theme.css, so it silently won regardless of file
+   order). Tinted brand colors instead of Tailwind's saturated -900 blocks,
+   to stay inside the calm editorial palette rather than reverting to
+   generic SaaS. Requires tokens.css for the --surface-*/--ink-* variables.
+   ========================================================================== */
+.dark .bg-red-50,
+.dark .bg-red-100 {
+  background: rgba(196, 30, 58, 0.12) !important;
+}
+
+.dark .border-red-200,
+.dark .border-red-300,
+.dark .border-red-400,
+.dark .border-red-500 {
+  border-color: rgba(196, 30, 58, 0.45) !important;
+}
+
+.dark .text-red-500,
+.dark .text-red-600,
+.dark .text-red-700,
+.dark .text-red-800 {
+  color: #f0a8b4 !important;
+}
+
+.dark .bg-green-50,
+.dark .bg-green-100 {
+  background: rgba(27, 122, 69, 0.16) !important;
+}
+
+.dark .border-green-100,
+.dark .border-green-200,
+.dark .border-green-400,
+.dark .border-green-500,
+.dark .border-green-600 {
+  border-color: rgba(74, 180, 120, 0.4) !important;
+}
+
+.dark .text-green-500,
+.dark .text-green-600,
+.dark .text-green-700 {
+  color: #7fd4a3 !important;
+}
+
+.dark .bg-blue-50,
+.dark .bg-blue-100,
+.dark .bg-gradient-to-r.from-blue-50 {
+  background: var(--surface-muted) !important;
+}
+
+.dark .border-blue-200,
+.dark .border-blue-400,
+.dark .border-blue-500 {
+  border-color: var(--brand-green) !important;
+}
+
+.dark .text-blue-500,
+.dark .text-blue-600,
+.dark .text-blue-700,
+.dark .text-blue-800,
+.dark .text-blue-900 {
+  color: var(--ink-strong) !important;
+}
+
+.dark .bg-yellow-50 {
+  background: rgba(217, 168, 44, 0.12) !important;
+}
+
+.dark .border-yellow-200,
+.dark .border-yellow-300,
+.dark .border-yellow-500 {
+  border-color: rgba(217, 168, 44, 0.4) !important;
+}
+
+.dark .text-yellow-800 {
+  color: #e3c46a !important;
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-100 {
+  background: var(--surface-muted) !important;
+}
+
+.dark .bg-gray-200 {
+  background: var(--line) !important;
+}
+
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: var(--line) !important;
+}
+
+.dark .text-gray-400,
+.dark .text-gray-500 {
+  color: var(--ink-soft) !important;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: var(--ink) !important;
+}
+
+.dark input[type="text"]::placeholder,
+.dark textarea::placeholder {
+  color: var(--ink-soft) !important;
+}
+
+/* Smooth theme switch, scoped to what actually changes color */
+body,
+.card-modern,
+input,
+textarea,
+button {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}

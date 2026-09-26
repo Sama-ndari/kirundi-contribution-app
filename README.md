@@ -7,7 +7,7 @@
 **Ikirundi cacu, Ijwi ryacu!**  
 *Notre langue, notre voix.*
 
-App web pour enrichir le dataset Kirundi — traductions et nouvelles phrases.
+App web pour enrichir le dataset Kirundi : traductions et nouvelles phrases.
 
 ![Live](https://img.shields.io/badge/🚀_Live-Application-green?style=for-the-badge)![HF](https://img.shields.io/badge/Dataset-Hugging_Face-yellow?style=for-the-badge)
 

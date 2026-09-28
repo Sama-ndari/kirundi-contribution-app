@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Motion - Ijwi ry'Ikirundi AI (2026)
+   One vocabulary for every animation in the app:
+     · content ENTERS by rising a few pixels while fading in
+     · progress GROWS from its own origin, left to right
+     · controls ANSWER the pointer inside 200ms
+   Durations and easings are tokens (tokens.css), so the pace of the whole app
+   changes in one place. Loaded last so these rules sit on top of theme.css.
+
+   Entrances use `backwards`, never `both`: the end state of every entrance is
+   the element's natural state, and a lingering `both` fill would outrank the
+   hover transforms defined in theme.css.
+
+   Everything here is switched off under prefers-reduced-motion (end of file).
+   ========================================================================== */
+
+/* --- Vocabulary ----------------------------------------------------------- */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes growX {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes swapIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes countPop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* "You are here" marker on the current rank - the one looping animation in
+   the app, slow and low-contrast so it reads as a pulse, not a blink. */
+@keyframes beacon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(27, 122, 69, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(27, 122, 69, 0.06);
+  }
+}
+
+/* --- Masthead: the brand introduces itself, then the flag draws ----------- */
+.hero-kicker,
+.hero-title,
+.hero-motto,
+.hero-mission,
+.hero-links {
+  animation: riseIn var(--dur-base) var(--ease-out) backwards;
+}
+
+.hero-title {
+  animation-delay: calc(var(--stagger) * 0.5);
+}
+
+.hero-motto {
+  animation-delay: var(--stagger);
+}
+
+.hero-mission {
+  animation-delay: calc(var(--stagger) * 1.5);
+}
+
+.hero-links {
+  animation-delay: calc(var(--stagger) * 2);
+}
+
+.site-header .flag-stripe {
+  transform-origin: left center;
+  animation: growX var(--dur-slow) var(--ease-out) calc(var(--stagger) * 2.5)
+    backwards;
+}
+
+/* --- Main menu: sections arrive in reading order -------------------------- */
+/* The container's own fade would double up with the per-section motion below. */
+#main-menu.fade-in {
+  animation: none !important;
+}
+
+.menu-intro,
+.rank-card,
+.level-card {
+  animation: riseIn var(--dur-base) var(--ease-out) backwards;
+}
+
+.rank-card {
+  animation-delay: var(--stagger);
+}
+
+.level-card:nth-child(1) {
+  animation-delay: calc(var(--stagger) * 2);
+}
+
+.level-card:nth-child(2) {
+  animation-delay: calc(var(--stagger) * 3);
+}
+
+.level-card:nth-child(3) {
+  animation-delay: calc(var(--stagger) * 4);
+}
+
+/* --- Rank card: the path is walked from the first milestone outwards ------ */
+.rank-step + .rank-step::before {
+  transform-origin: left center;
+  animation: growX var(--dur-slow) var(--ease-out) backwards;
+}
+
+.rank-step:nth-child(2)::before {
+  animation-delay: calc(var(--stagger) * 2);
+}
+
+.rank-step:nth-child(3)::before {
+  animation-delay: calc(var(--stagger) * 3);
+}
+
+.rank-step:nth-child(4)::before {
+  animation-delay: calc(var(--stagger) * 4);
+}
+
+.rank-step:nth-child(5)::before {
+  animation-delay: calc(var(--stagger) * 5);
+}
+
+.rank-step:nth-child(6)::before {
+  animation-delay: calc(var(--stagger) * 6);
+}
+
+.rank-step.is-active .rank-step-icon {
+  animation: beacon 3s var(--ease) 1.2s infinite;
+}
+
+/* --- Level cards: difficulty meter fills, icon answers the pointer -------- */
+.level-card-meter span {
+  transform-origin: left center;
+  animation: growX var(--dur-base) var(--ease-out) backwards;
+}
+
+.level-card-meter span:nth-child(1) {
+  animation-delay: calc(var(--stagger) * 3);
+}
+
+.level-card-meter span:nth-child(2) {
+  animation-delay: calc(var(--stagger) * 3.5);
+}
+
+.level-card-meter span:nth-child(3) {
+  animation-delay: calc(var(--stagger) * 4);
+}
+
+.level-card-icon {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.level-card:hover .level-card-icon {
+  transform: scale(1.08);
+}
+
+/* --- Panels that appear over the page ------------------------------------- */
+#success-overlay .surface-card-panel,
+#support-chat-modal {
+  animation: popIn var(--dur-base) var(--ease-out) backwards;
+}
+
+/* --- Content the app swaps in place (driven by motion.js) ----------------- */
+/* A new phrase should read as a new card, not as text that silently changed. */
+.is-swapping {
+  animation: swapIn var(--dur-base) var(--ease-out);
+}
+
+.is-counting {
+  animation: countPop var(--dur-base) var(--ease);
+}
+
+/* --- Accessibility -------------------------------------------------------- */
+/* Anyone who asks for less motion gets the same layout with none of it. The
+   entrances end at the natural state, so removing them loses nothing. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-kicker,
+  .hero-title,
+  .hero-motto,
+  .hero-mission,
+  .hero-links,
+  .site-header .flag-stripe,
+  .menu-intro,
+  .rank-card,
+  .level-card,
+  .level-card-meter span,
+  .rank-step + .rank-step::before,
+  .rank-step.is-active .rank-step-icon,
+  #success-overlay .surface-card-panel,
+  #support-chat-modal,
+  .is-swapping,
+  .is-counting {
+    animation: none !important;
+  }
+
+  .level-card:hover .level-card-icon {
+    transform: none;
+  }
+}

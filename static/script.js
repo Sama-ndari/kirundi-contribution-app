@@ -2131,10 +2131,14 @@ function updateGamification() {
   const totalMedium = getSubmittedFrenchPhrases().length;
   const totalContributions = totalEasy + totalMedium;
 
-  // Update total count
+  // Update total count - motion.js counts it up when present
   const countElement = document.getElementById("total-contribution-count");
   if (countElement) {
-    countElement.textContent = totalContributions;
+    if (window.motion && window.motion.countUp) {
+      window.motion.countUp(countElement, totalContributions);
+    } else {
+      countElement.textContent = totalContributions;
+    }
   }
 
   // Rank Tiers Definition

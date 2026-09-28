@@ -1456,6 +1456,8 @@ function translateInterface() {
       chooseLevel: "Choose your level",
       selectType:
         "Three ways to grow the Kirundi dataset. Start at the level that suits you.",
+      contributionNotice:
+        "Your contributions enrich the Ijwi ry'Ikirundi AI dataset, whose full version is private.",
       // Game interface
       backToMenu: "← Back to Menu",
       skip: "⏭️ Skip",
@@ -1588,6 +1590,8 @@ function translateInterface() {
       chooseLevel: "Choisissez votre niveau",
       selectType:
         "Trois façons d'enrichir le dataset Kirundi. Commencez au niveau qui vous convient.",
+      contributionNotice:
+        "Vos contributions enrichissent le dataset d'Ijwi ry'Ikirundi AI, dont la version complète est privée.",
       // Game interface
       backToMenu: "← Retour au Menu",
       skip: "⏭️ Ignorer",

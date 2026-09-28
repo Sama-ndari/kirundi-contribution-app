@@ -19,6 +19,9 @@ Part of [Ijwi ry'Ikirundi AI](https://github.com/Ijwi-ry-Ikirundi-AI).
 Submissions go to Google Sheets, then maintainers merge them into the dataset
 (via **Dataset-Management**).
 
+Your contributions enrich the Ijwi ry'Ikirundi AI dataset, whose full version is private.
+The public dataset on Hugging Face lists the Kirundi sentences that still need a translation.
+
 ### Modes
 
 | Level | Action |

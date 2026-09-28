@@ -362,6 +362,44 @@ a:focus-visible,
   color: #f0a8b4 !important;
 }
 
+/* Mode screen headings: calmer size so they don't shout like a second hero */
+#easy-mode > .max-w-5xl h2,
+#medium-mode > .max-w-5xl h2,
+#hard-mode > .max-w-5xl h2 {
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem) !important;
+  line-height: 1.2;
+}
+
+/* Back-to-menu: quiet outline button, not a stock gray block */
+#easy-mode [onclick="backToMainMenu()"],
+#medium-mode [onclick="backToMainMenu()"],
+#hard-mode [onclick="backToMainMenu()"] {
+  background: transparent !important;
+  color: var(--ink-soft) !important;
+  border: 1px solid var(--line) !important;
+  font-weight: 600;
+}
+
+#easy-mode [onclick="backToMainMenu()"]:hover,
+#medium-mode [onclick="backToMainMenu()"]:hover,
+#hard-mode [onclick="backToMainMenu()"]:hover {
+  background: var(--surface-muted) !important;
+  color: var(--ink-strong) !important;
+  border-color: var(--line) !important;
+}
+
+/* Session counter: compact badge instead of a big floating number */
+#progress-text,
+#medium-progress-text {
+  display: inline-block;
+  padding: 0.15rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(27, 122, 69, 0.1);
+  border: 1px solid rgba(27, 122, 69, 0.25);
+  font-size: 1.5rem !important;
+  line-height: 1.3;
+}
+
 /* --- Submit CTA pulse: subtle attention cue, not a garish glow ------------- */
 .pulse-button:not(:disabled) {
   animation: ctaPulse 2.2s var(--ease) infinite;
@@ -496,8 +534,8 @@ a:focus-visible,
 }
 
 .header-hero-inner {
-  padding: 0.55rem 1rem 1.4rem;
-  max-width: 38rem;
+  padding: 0.4rem 1rem 1.1rem;
+  max-width: 36rem;
   margin: 0 auto;
 }
 
@@ -520,21 +558,22 @@ a:focus-visible,
 }
 
 .hero-motto {
-  margin: 0 0 0.8rem;
-  font-size: 1.05rem;
+  margin: 0 0 0.65rem;
+  font-size: 1.02rem;
   font-weight: 550;
   color: var(--brand-green);
   font-style: italic;
 }
 
 .hero-mission {
-  margin: 0 auto 1.15rem;
+  margin: 0 auto 1rem;
   max-width: 30rem;
-  font-size: 0.98rem;
-  line-height: 1.55;
+  font-size: 0.96rem;
+  line-height: 1.5;
   color: var(--ink);
 }
 
+/* Three pillars: plain quiet text strip */
 .hero-links {
   list-style: none;
   margin: 0;
@@ -561,42 +600,63 @@ a:focus-visible,
 }
 
 
-/* --- Main menu: intro · rank · level cards -------------------------------- */
+/* Pull content up under the hero - the hero already carries bottom padding, so
+   the default py-8 top gap left an empty band that stretched the page taller. */
+main.container,
+body > .container.mx-auto.px-4.py-8 {
+  padding-top: 1.25rem;
+}
+
+/* --- Main menu: intro · rank · level cards --------------------------------
+   Everything shares ONE content width and left edge, so the sections stack as
+   a clean column instead of the earlier centered pyramid (intro < rank < cards
+   at three widths read as a staircase). */
 .menu-panel {
-  max-width: 52rem;
+  max-width: 48rem;
   margin: 0 auto;
 }
 
 .menu-intro {
-  text-align: center;
-  margin-bottom: 1.75rem;
+  text-align: left;
+  margin-bottom: 1.4rem;
+  max-width: 40rem;
 }
 
 .menu-title {
-  margin: 0 0 0.55rem;
-  font-size: clamp(1.65rem, 3.5vw, 2.15rem);
-  font-weight: 700;
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  font-weight: 650;
   color: var(--ink-strong);
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .menu-lead {
-  margin: 0 auto;
-  max-width: 28rem;
-  font-size: 0.98rem;
+  margin: 0;
+  max-width: 34rem;
+  font-size: 0.95rem;
   line-height: 1.55;
   color: var(--ink-soft);
 }
 
-/* Rank card */
+/* Contribution notice: quiet footnote, not a third stacked paragraph */
+.menu-intro .menu-notice {
+  margin: 0.5rem 0 0;
+  max-width: 34rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
+/* Rank card - spans the full content width so it lines up with the cards */
 .rank-card {
   background: var(--surface-card);
   border: 1px solid var(--line-soft);
   border-radius: var(--r-xl);
   padding: 1.15rem 1.25rem 1rem;
-  margin: 0 auto 1.5rem;
-  max-width: 40rem;
+  margin: 0 0 1.25rem;
+  max-width: none;
 }
 
 .rank-card-top {
@@ -759,11 +819,11 @@ a:focus-visible,
 
 .level-card {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   text-align: left;
-  gap: 0.85rem;
-  padding: 1.25rem 1.2rem 1.15rem;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
   min-height: auto;
   background: var(--surface-card) !important;
   border: 1px solid var(--line-soft) !important;
@@ -779,6 +839,10 @@ a:focus-visible,
 
 @media (min-width: 768px) {
   .level-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1.25rem 1.2rem 1.15rem;
     border-right: 1px solid var(--line-soft) !important;
     border-bottom: 1px solid var(--line-soft) !important;
   }

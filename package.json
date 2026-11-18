@@ -1,0 +1,11 @@
+{
+  "name": "kirundi-contribution-app",
+  "private": true,
+  "description": "Build tooling only: the site itself is static and served as-is.",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i static/tailwind.input.css -o static/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

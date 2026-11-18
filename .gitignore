@@ -9,3 +9,5 @@ __pycache__/
 .vscode/
 .idea/
 *.DS_Store
+# Build tooling (static/tailwind.css is committed: the site has no build step)
+node_modules/

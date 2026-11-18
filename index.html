@@ -46,34 +46,27 @@
       rel="stylesheet"
     />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      // Dark mode is a manual toggle (see toggleDarkMode in script.js), not
-      // the OS preference - without this, Tailwind's `dark:` utilities
-      // silently follow prefers-color-scheme instead of the html.dark class.
-      tailwind.config = {
-        darkMode: "class",
-      };
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="static/tokens.css?v=7" />
-    <link rel="stylesheet" href="static/styles.css?v=7" />
-    <link rel="stylesheet" href="static/buttons.css?v=7" />
-    <link rel="stylesheet" href="static/theme.css?v=7" />
-    <link rel="stylesheet" href="static/dark-theme.css?v=7" />
-    <link rel="stylesheet" href="static/motion.css?v=7" />
+    <link rel="stylesheet" href="static/tokens.css?v=8" />
+    <link rel="stylesheet" href="static/styles.css?v=8" />
+    <link rel="stylesheet" href="static/buttons.css?v=8" />
+    <link rel="stylesheet" href="static/theme.css?v=8" />
+    <link rel="stylesheet" href="static/dark-theme.css?v=8" />
+    <link rel="stylesheet" href="static/motion.css?v=8" />
+    <!-- Built by `npm run build:css` (tailwind.config.js); loaded last, like the old CDN. -->
+    <link rel="stylesheet" href="static/tailwind.css?v=8" />
   </head>
   <body class="min-h-screen">
     <!-- Header -->
     <header class="site-header">
       <div class="header-bar">
         <div class="container mx-auto px-4 header-bar-inner">
-          <div class="header-toggles" role="group" aria-label="Display controls">
+          <div class="header-toggles" role="group" aria-label="Display controls" data-i18n-aria-label="displayControls">
             <button
               id="dark-mode-toggle"
               onclick="toggleDarkMode()"
               class="header-toggle"
-              aria-label="Toggle dark mode"
+              aria-label="Toggle dark mode" data-i18n-aria-label="toggleDarkMode"
               type="button"
             >
               <svg id="theme-toggle-sun" class="header-toggle-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -89,7 +82,7 @@
               onclick="toggleLanguage()"
               class="header-toggle header-toggle-lang"
               type="button"
-              aria-label="Switch language"
+              aria-label="Switch language" data-i18n-aria-label="switchLanguage"
             >
               <span id="language-text">EN</span>
             </button>
@@ -99,16 +92,16 @@
 
       <div class="header-hero">
         <div class="container mx-auto px-4 header-hero-inner">
-          <p id="subtitle" class="hero-kicker font-inter">Hub de Contribution</p>
+          <p id="subtitle" class="hero-kicker font-inter" data-i18n="subtitle">Hub de Contribution</p>
           <h1 class="font-poppins hero-title">Ijwi ry'Ikirundi AI</h1>
           <p class="hero-motto font-poppins">Ikirundi cacu, Ijwi ryacu.</p>
-          <p id="mission-text" class="font-inter hero-mission">
+          <p id="mission-text" class="font-inter hero-mission" data-i18n="mission">
             Aidez-nous à construire l'avenir de l'IA en langue Kirundi grâce à la collaboration communautaire.
           </p>
           <ul class="hero-links font-inter">
-            <li id="preserving-text">Préserver l'Héritage</li>
-            <li id="building-text">Construire l'Avenir</li>
-            <li id="empowering-text">Autonomiser la Communauté</li>
+            <li id="preserving-text" data-i18n="preserving">Préserver l'Héritage</li>
+            <li id="building-text" data-i18n="building">Construire l'Avenir</li>
+            <li id="empowering-text" data-i18n="empowering">Autonomiser la Communauté</li>
           </ul>
         </div>
       </div>
@@ -118,7 +111,7 @@
     <button
       id="support-chat-btn"
       class="fixed z-40 bottom-6 right-6 bg-red-600 hover:bg-green-700 text-white rounded-full shadow-lg p-3 opacity-80 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
-      aria-label="Chat Support"
+      aria-label="Chat Support" data-i18n-aria-label="supportAria"
     >
       <svg
         class="w-6 h-6 text-white"
@@ -131,7 +124,7 @@
           clip-rule="evenodd"
         />
       </svg>
-      <span class="hidden md:inline font-semibold" data-translate="supportBtn"
+      <span class="hidden md:inline font-semibold" data-i18n="supportBtn"
         >Assistance</span
       >
     </button>
@@ -160,14 +153,14 @@
         </svg>
         <h2
           class="font-poppins text-lg font-bold text-green-700"
-          data-translate="needHelp"
+          data-i18n="needHelp"
         >
           Besoin d'aide?
         </h2>
       </div>
       <p
         class="font-inter text-gray-700 text-center text-sm"
-        data-translate="supportDesc"
+        data-i18n="supportDesc"
       >
         Pour toute question, suggestion ou assistance technique, contactez-nous
         :
@@ -177,7 +170,6 @@
           href="https://wa.me/25777568903"
           target="_blank"
           class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-colors justify-center"
-          data-translate="whatsappBtn"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path
@@ -189,7 +181,6 @@
         <a
           href="mailto:cezaremardini10@gmail.com"
           class="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded-lg transition-colors justify-center"
-          data-translate="emailBtn"
         >
           Email
         </a>
@@ -197,7 +188,7 @@
       <button
         id="close-support-chat"
         class="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-xl font-bold bg-white rounded-full w-8 h-8 flex items-center justify-center focus:outline-none"
-        aria-label="Close"
+        aria-label="Close" data-i18n-aria-label="close"
       >
         &times;
       </button>
@@ -210,13 +201,13 @@
         <div class="max-w-5xl mx-auto">
           <div class="menu-panel">
             <div class="menu-intro">
-              <h2 class="font-poppins menu-title" data-translate="chooseLevel">
+              <h2 class="font-poppins menu-title" data-i18n="chooseLevel">
                 Choisissez votre niveau
               </h2>
-              <p class="font-inter menu-lead" data-translate="selectType">
+              <p class="font-inter menu-lead" data-i18n="selectType">
                 Trois façons d'enrichir le dataset Kirundi. Commencez au niveau qui vous convient.
               </p>
-              <p class="font-inter menu-notice" data-translate="contributionNotice">
+              <p class="font-inter menu-notice" data-i18n="contributionNotice">
                 Vos contributions enrichissent le dataset d'Ijwi ry'Ikirundi AI, dont la version complète est privée.
               </p>
             </div>
@@ -225,24 +216,24 @@
             <div class="rank-card">
               <div class="rank-card-top">
                 <div class="rank-current">
-                  <p class="rank-label" data-translate="yourRank">Votre Rang / Iteka Ryawe</p>
+                  <p class="rank-label" data-i18n="yourRank">Votre Rang / Iteka Ryawe</p>
                   <div class="rank-current-row">
                     <span class="rank-emoji" id="user-rank-icon" aria-hidden="true">🌱</span>
                     <div>
                       <h3 class="font-poppins rank-name" id="user-rank-title">Inyuka (Beginner)</h3>
                       <p class="rank-count">
                         <span id="total-contribution-count">0</span>
-                        <span data-translate="contributions">Contributions</span>
+                        <span data-i18n="contributions">Contributions</span>
                       </p>
                     </div>
                   </div>
                 </div>
                 <div class="rank-next">
-                  <p class="rank-label" data-translate="nextRank">Prochain rang</p>
+                  <p class="rank-label" data-i18n="nextRank">Prochain rang</p>
                   <p class="rank-next-name" id="next-rank-title">Umukozi</p>
                   <p class="rank-next-left">
                     <span id="contributions-left">10</span>
-                    <span data-translate="toGo">restants</span>
+                    <span data-i18n="toGo">restants</span>
                     · <span id="progress-percentage">0%</span>
                   </p>
                 </div>
@@ -266,8 +257,8 @@
               <button type="button" onclick="initEasyMode()" class="level-card level-card--easy" role="listitem">
                 <span class="level-card-icon" aria-hidden="true">📝</span>
                 <span class="level-card-body">
-                  <span class="font-poppins level-card-title level-button-text">Niveau Facile</span>
-                  <span class="font-inter level-card-desc level-description">Traduire Kirundi → Français</span>
+                  <span class="font-poppins level-card-title level-button-text" data-i18n="easyLevel">Niveau Facile</span>
+                  <span class="font-inter level-card-desc level-description" data-i18n="easyDesc">Traduire Kirundi → Français</span>
                 </span>
                 <span class="level-card-foot">
                   <span class="level-card-meter" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -278,8 +269,8 @@
               <button type="button" onclick="initMediumMode()" class="level-card level-card--medium" role="listitem">
                 <span class="level-card-icon" aria-hidden="true">🔄</span>
                 <span class="level-card-body">
-                  <span class="font-poppins level-card-title level-button-text">Niveau Moyen</span>
-                  <span class="font-inter level-card-desc level-description">Traduire Français → Kirundi</span>
+                  <span class="font-poppins level-card-title level-button-text" data-i18n="mediumLevel">Niveau Moyen</span>
+                  <span class="font-inter level-card-desc level-description" data-i18n="mediumDesc">Traduire Français → Kirundi</span>
                 </span>
                 <span class="level-card-foot">
                   <span class="level-card-meter" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -290,8 +281,8 @@
               <button type="button" onclick="initHardMode()" class="level-card level-card--hard" role="listitem">
                 <span class="level-card-icon" aria-hidden="true">✍🏾</span>
                 <span class="level-card-body">
-                  <span class="font-poppins level-card-title level-button-text">Niveau Difficile</span>
-                  <span class="font-inter level-card-desc level-description">Ajouter des paires originales</span>
+                  <span class="font-poppins level-card-title level-button-text" data-i18n="hardLevel">Niveau Difficile</span>
+                  <span class="font-inter level-card-desc level-description" data-i18n="hardDesc">Ajouter des paires originales</span>
                 </span>
                 <span class="level-card-foot">
                   <span class="level-card-meter" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -311,14 +302,14 @@
             <div
               class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0"
             >
-              <h2 class="text-2xl md:text-3xl font-bold text-green-700">
+              <h2 class="text-2xl md:text-3xl font-bold text-green-700" data-i18n="easyTitle">
                 Niveau Facile: Jeu de Traduction
               </h2>
               <button
                 onclick="backToMainMenu()"
                 class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base"
               >
-                ← Retour au Menu
+                <span data-i18n="backToMenu">← Retour au Menu</span>
               </button>
             </div>
 
@@ -327,10 +318,10 @@
               <div
                 class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto mb-4"
               ></div>
-              <p id="fetching-live-data" class="text-xl text-gray-600">
+              <p id="fetching-live-data" class="text-xl text-gray-600" data-i18n="fetchingLiveData">
                 Récupération des données en direct depuis Hugging Face...
               </p>
-              <p id="loading-untranslated" class="text-sm text-gray-500 mt-2">
+              <p id="loading-untranslated" class="text-sm text-gray-500 mt-2" data-i18n="loadingUntranslated">
                 Chargement des phrases non traduites du jeu de données officiel
               </p>
             </div>
@@ -360,13 +351,13 @@
                   </div>
                   <div class="flex-1">
                     <h3
-                      id="easy-error-title"
+                      id="easy-error-title" data-i18n="easyErrorTitle"
                       class="text-lg font-semibold text-red-800 mb-1"
                     >
                       Erreur de chargement des données
                     </h3>
                     <p
-                      id="easy-error-message"
+                      id="easy-error-message" data-i18n="easyLoadError"
                       class="text-sm text-red-700 mb-4"
                     >
                       Nous n'avons pas pu charger les phrases kirundi en direct
@@ -382,14 +373,14 @@
             <div id="game-ui" class="hidden">
               <!-- Session Counter (Infinite Mode) -->
               <div class="mb-6 text-center">
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1" data-translate="sessionCounter">Translations in this session:</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1" data-i18n="sessionCounter">Translations in this session:</p>
                 <span id="progress-text" class="font-bold text-green-600 dark:text-green-400 text-3xl">0</span>
               </div>
 
               <!-- Kirundi Phrase -->
               <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700 mb-2"
-                  >Phrase Kirundi:</label
+                <label class="block text-lg font-semibold text-gray-700 mb-2" data-i18n="kirundiPhrase"
+                  >Phrase Kirundi :</label
                 >
                 <div
                   id="kirundi-phrase"
@@ -417,14 +408,14 @@
                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 16.5c-.77.833.192 2.5 1.732 2.5z"
                       ></path>
                     </svg>
-                    <span id="report-problem-text"
-                      >Signaler un problème avec cette phrase</span
+                    <span id="report-problem-text" data-i18n="reportProblem"
+                      >Signaler un problème</span
                     >
                   </button>
                 </div>
                 <div class="mt-1 text-center">
                   <p class="text-xs text-gray-500">
-                    <span id="report-help-text"
+                    <span id="report-help-text" data-i18n="reportHelpText"
                       >Cliquez si vous trouvez des erreurs dans la phrase
                       kirundi</span
                     >
@@ -435,25 +426,26 @@
               <!-- Correction Box (Hidden by default) -->
               <div id="correction-container" class="mb-6 hidden">
                 <label class="block text-lg font-semibold text-gray-700 mb-2">
-                  <span id="correction-label">Corriger la phrase kirundi:</span>
+                  <span id="correction-label" data-i18n="correctionLabel">Corriger la phrase kirundi:</span>
                 </label>
                 <textarea
                   id="correction-box"
                   class="w-full p-4 border-2 border-yellow-300 rounded-lg focus:border-yellow-500 focus:outline-none text-lg resize-none bg-yellow-50"
                   rows="3"
-                  placeholder="Corrigez les erreurs dans la phrase kirundi..."
+                  maxlength="500"
+                  placeholder="Corrigez les erreurs dans la phrase kirundi…"
+                  data-i18n-placeholder="correctionPlaceholder"
                 ></textarea>
                 <div
                   class="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-lg"
                 >
                   <p class="text-sm text-yellow-800">
                     <span class="font-medium"
-                      >💡 <span id="correction-help">Aide:</span></span
+                      >💡 <span id="correction-help" data-i18n="correctionHelp">Aide:</span></span
                     >
-                    <span id="correction-instructions"
+                    <span id="correction-instructions" data-i18n="correctionInstructions"
                       >Corrigez les fautes d'orthographe, de grammaire ou autres
                       erreurs dans la phrase kirundi ci-dessus.</span
-```
                     >
                   </p>
                 </div>
@@ -483,7 +475,7 @@
                   </div>
                   <!-- Content -->
                   <div class="flex-1">
-                    <div class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1" id="ai-suggestion-label">
+                    <div class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1" id="ai-suggestion-label" data-i18n="aiSuggestion">
                       Suggestion IA
                     </div>
                     <div class="text-lg font-medium text-gray-800 leading-relaxed" id="ai-suggestion-text">
@@ -506,7 +498,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                     </svg>
-                    <span id="approve-btn-text">Approuver la Suggestion</span>
+                    <span id="approve-btn-text" data-i18n="approveSuggestion">Approuver la Suggestion</span>
                   </button>
                   <button
                     id="edit-translation-btn"
@@ -516,7 +508,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                     </svg>
-                    <span id="edit-btn-text">Modifier la Traduction</span>
+                    <span id="edit-btn-text" data-i18n="editTranslation">Modifier la Traduction</span>
                   </button>
                 </div>
                 <div class="text-center">
@@ -527,7 +519,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
                     </svg>
-                    <span>Ignorer</span>
+                    <span data-i18n="skip">Ignorer</span>
                   </button>
                 </div>
               </div>
@@ -539,26 +531,25 @@
                   <label
                     for="french-input"
                     class="block text-lg font-semibold text-gray-700 mb-2"
-                    >Votre Traduction Française:</label
+                    data-i18n="frenchTranslation"
+                    >Votre Traduction Française :</label
                   >
                   <textarea
                     id="french-input"
                     class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg resize-none"
                     rows="3"
-                    placeholder="Tapez votre traduction française ici..."
+                    maxlength="500"
+                    placeholder="Tapez votre traduction française ici…"
+                    data-i18n-placeholder="easyPlaceholder"
                   ></textarea>
                   <div
                     class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg"
                   >
                     <p class="text-sm text-blue-700 skip-help-text">
-                      <span class="font-medium"
-                        >💡 Vous ne connaissez pas la réponse?</span
-                      >
-                      Pas de problème! Cliquez sur "Ignorer" ou appuyez sur
-                      <kbd class="bg-blue-100 px-2 py-1 rounded text-xs"
-                        >Échap</kbd
-                      >
-                      pour passer à la phrase suivante.
+                      <span class="font-medium">💡 <span data-i18n="skipHelp">Vous ne connaissez pas la réponse ?</span></span>
+                      <span data-i18n="skipText">Pas de problème ! Cliquez sur « Ignorer » ou appuyez sur</span>
+                      <kbd class="bg-blue-100 px-2 py-1 rounded text-xs" data-i18n="escKey">Échap</kbd>
+                      <span data-i18n="skipAction">pour passer à la phrase suivante.</span>
                     </p>
                   </div>
                 </div>
@@ -568,7 +559,7 @@
                   id="error-message"
                   class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4"
                 >
-                  <span id="easy-error-text"
+                  <span id="easy-error-text" data-message data-i18n="translationRequired"
                     >Veuillez entrer une traduction avant de continuer.</span
                   >
                 </div>
@@ -585,22 +576,22 @@
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
                       </svg>
-                      <span>Ignorer</span>
+                      <span data-i18n="skip">Ignorer</span>
                     </button>
                     <button
                       id="next-button"
                       onclick="nextEasyPhrase()"
                       class="btn-primary-action text-white font-bold py-4 px-8 rounded-xl text-lg md:text-xl flex items-center justify-center gap-2 order-1 sm:order-2 btn-responsive"
                     >
-                      <span>Soumettre la Traduction</span>
+                      <span data-i18n="submitTranslation">Soumettre la Traduction</span>
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                       </svg>
                     </button>
                   </div>
                   <div class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
-                    💡 <strong>Raccourcis:</strong> Ctrl+Entrée pour soumettre •
-                    Échap pour ignorer
+                    💡 <strong data-i18n="shortcutsTitle">Raccourcis :</strong>
+                    <span data-i18n="shortcutsText">Ctrl+Entrée pour soumettre • Échap pour ignorer</span>
                   </div>
                 </div>
               </div>
@@ -615,20 +606,20 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
                 </svg>
-                <span>💾 <span data-translate="saveAndSubmit">Enregistrer et Soumettre</span></span> (<span id="easy-count-badge">0</span>)</span>
+                <span>💾 <span data-i18n="saveAndSubmit">Enregistrer et Soumettre</span> (<span id="easy-count-badge">0</span>)</span>
               </button>
-              <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-2" data-translate="submitAnytime">Vous pouvez soumettre à tout moment, même avec 1 seule traduction!</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-2" data-i18n="submitAnytime">Vous pouvez soumettre à tout moment, même avec 1 seule traduction!</p>
             </div>
             <!-- End of game-ui -->
 
             <!-- Completion UI -->
             <div id="completion-ui" class="hidden text-center py-12">
               <div class="text-6xl mb-4">🎉</div>
-              <h3 class="text-2xl font-bold text-green-700 mb-4">
+              <h3 class="text-2xl font-bold text-green-700 mb-4" data-i18n="congratulations">
                 Félicitations!
               </h3>
-              <p class="text-lg text-gray-600 mb-6">
-                Vous avez terminé un lot de traductions!
+              <p class="text-lg text-gray-600 mb-6" data-i18n="completedBatch">
+                Vous avez terminé un lot de traductions !
               </p>
 
               <!-- Download Button -->
@@ -637,6 +628,7 @@
                   id="submit-easy-button"
                   class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-xl pulse-button"
                   onclick="submitEasyTranslations()"
+                  data-i18n="submitTranslations"
                 >
                   Soumettre les traductions
                 </button>
@@ -655,14 +647,14 @@
             <div
               class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0"
             >
-              <h2 class="text-2xl md:text-3xl font-bold text-blue-700">
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-700" data-i18n="mediumTitle">
                 Niveau Moyen: Traduire Français vers Kirundi
               </h2>
               <button
                 onclick="backToMainMenu()"
                 class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base"
               >
-                ← Retour au Menu
+                <span data-i18n="backToMenu">← Retour au Menu</span>
               </button>
             </div>
 
@@ -671,11 +663,11 @@
               <div
                 class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"
               ></div>
-              <p id="loading-medium-data" class="text-xl text-gray-600">
+              <p id="loading-medium-data" class="text-xl text-gray-600" data-i18n="loadingMediumData">
                 Chargement des phrases françaises et vérification de la base de
                 données...
               </p>
-              <p id="preparing-session" class="text-sm text-gray-500 mt-2">
+              <p id="preparing-session" class="text-sm text-gray-500 mt-2" data-i18n="preparingSession">
                 Préparation de votre session de traduction
               </p>
             </div>
@@ -705,13 +697,14 @@
                   </div>
                   <div class="flex-1">
                     <h3
-                      id="medium-error-title"
+                      id="medium-error-title" data-i18n="mediumErrorTitle"
                       class="text-lg font-semibold text-red-800 mb-1"
                     >
                       Erreur de chargement du mode Moyen
                     </h3>
                     <p
-                      id="medium-error-message"
+                      id="medium-error-text"
+                      data-i18n="mediumLoadError"
                       class="text-sm text-red-700 mb-4"
                     >
                       Nous n'avons pas pu charger les phrases françaises pour le
@@ -727,7 +720,7 @@
             <div id="medium-game-ui" class="hidden">
               <!-- Instructions -->
               <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-                <p id="medium-instructions" class="text-blue-800">
+                <p id="medium-instructions" class="text-blue-800" data-i18n="mediumInstructions">
                   Traduisez les phrases françaises en kirundi. Vos traductions
                   seront vérifiées dans notre base de données pour éviter les
                   doublons.
@@ -737,14 +730,14 @@
 
               <!-- Session Counter (Infinite Mode) -->
               <div class="mb-6 text-center">
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1" data-translate="sessionCounter">Translations in this session:</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1" data-i18n="sessionCounter">Translations in this session:</p>
                 <span id="medium-progress-text" class="font-bold text-blue-600 dark:text-blue-400 text-3xl">0</span>
               </div>
 
               <!-- French Sentence Display -->
               <div class="mb-6">
-                <label class="block text-lg font-semibold text-gray-700 mb-3"
-                  >Phrase Française:</label
+                <label class="block text-lg font-semibold text-gray-700 mb-3" data-i18n="frenchSentence"
+                  >Phrase Française :</label
                 >
                 <div
                   class="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center"
@@ -763,26 +756,25 @@
                 <label
                   for="kirundi-translation"
                   class="block text-lg font-semibold text-gray-700 mb-2"
-                  >Votre Traduction Kirundi:</label
+                  data-i18n="kirundiTranslation"
+                  >Votre Traduction Kirundi :</label
                 >
                 <textarea
                   id="kirundi-translation"
                   class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg resize-none"
                   rows="3"
-                  placeholder="Tapez votre traduction en kirundi ici..."
+                  maxlength="500"
+                  placeholder="Tapez votre traduction en kirundi ici…"
+                  data-i18n-placeholder="mediumPlaceholder"
                 ></textarea>
                 <div
                   class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg"
                 >
                   <p class="text-sm text-blue-700 skip-help-text">
-                    <span class="font-medium"
-                      >💡 Vous ne connaissez pas la réponse?</span
-                    >
-                    Pas de problème! Cliquez sur "Ignorer" ou appuyez sur
-                    <kbd class="bg-blue-100 px-2 py-1 rounded text-xs"
-                      >Échap</kbd
-                    >
-                    pour passer à la phrase suivante.
+                    <span class="font-medium">💡 <span data-i18n="skipHelp">Vous ne connaissez pas la réponse ?</span></span>
+                    <span data-i18n="skipText">Pas de problème ! Cliquez sur « Ignorer » ou appuyez sur</span>
+                    <kbd class="bg-blue-100 px-2 py-1 rounded text-xs" data-i18n="escKey">Échap</kbd>
+                    <span data-i18n="skipAction">pour passer à la phrase suivante.</span>
                   </p>
                 </div>
               </div>
@@ -800,7 +792,7 @@
                 id="medium-success-message"
                 class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4"
               >
-                <span id="medium-success-text"
+                <span id="medium-success-text" data-message data-i18n="translationAdded"
                   >Traduction ajoutée avec succès!</span
                 >
               </div>
@@ -817,22 +809,22 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
                     </svg>
-                    <span>Ignorer</span>
+                    <span data-i18n="skip">Ignorer</span>
                   </button>
                   <button
                     id="medium-submit-button"
                     onclick="submitMediumTranslation()"
                     class="btn-primary-action text-white font-bold py-4 px-8 rounded-xl text-lg md:text-xl flex items-center justify-center gap-2 order-1 sm:order-2 btn-responsive"
                   >
-                    <span>Soumettre la Traduction</span>
+                    <span data-i18n="submitTranslation">Soumettre la Traduction</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                     </svg>
                   </button>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
-                  💡 <strong>Raccourcis:</strong> Ctrl+Entrée pour soumettre •
-                  Échap pour ignorer
+                  💡 <strong data-i18n="shortcutsTitle">Raccourcis :</strong>
+                  <span data-i18n="shortcutsText">Ctrl+Entrée pour soumettre • Échap pour ignorer</span>
                 </div>
               </div>
             </div>
@@ -846,19 +838,19 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
                 </svg>
-                <span>💾 <span data-translate="saveAndSubmit">Enregistrer et Soumettre</span> (<span id="medium-count-badge">0</span>)</span>
+                <span>💾 <span data-i18n="saveAndSubmit">Enregistrer et Soumettre</span> (<span id="medium-count-badge">0</span>)</span>
               </button>
-              <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-2" data-translate="submitAnytime">Vous pouvez soumettre à tout moment, même avec 1 seule traduction!</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-2" data-i18n="submitAnytime">Vous pouvez soumettre à tout moment, même avec 1 seule traduction!</p>
             </div>
 
             <!-- Completion UI -->
             <div id="medium-completion-ui" class="hidden text-center py-12">
               <div class="text-6xl mb-4">🎉</div>
-              <h3 class="text-2xl font-bold text-blue-700 mb-4">
+              <h3 class="text-2xl font-bold text-blue-700 mb-4" data-i18n="excellentWork">
                 Excellent Travail!
               </h3>
-              <p class="text-lg text-gray-600 mb-6">
-                Vous avez terminé un lot de traductions français vers kirundi!
+              <p class="text-lg text-gray-600 mb-6" data-i18n="completedFrenchBatch">
+                Vous avez terminé un lot de traductions français vers kirundi !
               </p>
 
               <!-- Submission Button (Note: ID is the same as the one in the game, but state is different) -->
@@ -867,6 +859,7 @@
                   id="submit-medium-button"
                   class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-xl pulse-button"
                   onclick="submitMediumTranslations()"
+                  data-i18n="submitTranslations"
                 >
                   Soumettre les traductions
                 </button>
@@ -884,14 +877,14 @@
             <div
               class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 space-y-4 md:space-y-0"
             >
-              <h2 class="text-2xl md:text-3xl font-bold text-purple-700">
+              <h2 class="text-2xl md:text-3xl font-bold text-purple-700" data-i18n="hardTitle">
                 Niveau Difficile: Ajouter de Nouvelles Phrases
               </h2>
               <button
                 onclick="backToMainMenu()"
                 class="bg-gray-500 hover:bg-gray-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg transition-colors btn-modern text-sm md:text-base"
               >
-                ← Retour au Menu
+                <span data-i18n="backToMenu">← Retour au Menu</span>
               </button>
             </div>
 
@@ -900,8 +893,8 @@
               <div
                 class="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"
               ></div>
-              <p class="text-xl text-gray-600">
-                Chargement de la base de données...
+              <p class="text-xl text-gray-600" data-i18n="loadingDatabase">
+                Chargement de la base de données…
               </p>
             </div>
 
@@ -909,7 +902,7 @@
             <div id="hard-game-ui">
               <!-- Instructions -->
               <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-6">
-                <p id="hard-instructions" class="text-purple-800">
+                <p id="hard-instructions" class="text-purple-800" data-i18n="hardInstructions">
                   Créez de nouvelles paires de phrases kirundi-français.
                   Assurez-vous que vos phrases kirundi sont significatives et
                   contiennent au moins 4 mots.
@@ -933,13 +926,16 @@
                   <label
                     for="hard-new-kirundi"
                     class="block text-lg font-semibold text-gray-700 mb-2"
-                    >Nouvelle Phrase Kirundi:</label
+                    data-i18n="newKirundiSentence"
+                    >Nouvelle Phrase Kirundi :</label
                   >
                   <textarea
                     id="hard-new-kirundi"
                     class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg resize-none"
                     rows="3"
-                    placeholder="Entrez une nouvelle phrase kirundi..."
+                    maxlength="500"
+                    placeholder="Entrez une nouvelle phrase kirundi…"
+                    data-i18n-placeholder="kirundiPlaceholder"
                   ></textarea>
                 </div>
 
@@ -948,13 +944,16 @@
                   <label
                     for="hard-new-french"
                     class="block text-lg font-semibold text-gray-700 mb-2"
-                    >Traduction Française:</label
+                    data-i18n="frenchTranslationLabel"
+                    >Traduction Française :</label
                   >
                   <textarea
                     id="hard-new-french"
                     class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg resize-none"
                     rows="3"
-                    placeholder="Entrez une nouvelle phrase française..."
+                    maxlength="500"
+                    placeholder="Entrez une nouvelle phrase française…"
+                    data-i18n-placeholder="frenchPlaceholder"
                   ></textarea>
                 </div>
               </div>
@@ -976,7 +975,7 @@
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
                   </svg>
-                  <span>Ajouter une Phrase</span>
+                  <span data-i18n="addSentence">Ajouter une Phrase</span>
                 </button>
               </div>
             </div>
@@ -988,7 +987,7 @@
                 id="hard-success-message"
                 class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4"
               >
-                <span id="hard-success-text">Paire de phrases ajoutée avec succès!</span>
+                <span id="hard-success-text" data-message data-i18n="sentencePairAdded">Paire de phrases ajoutée avec succès!</span>
               </div>
 
               <!-- FINAL SUBMIT BUTTON (Should be visible only after user adds data) -->
@@ -997,6 +996,7 @@
                 onclick="submitHardSentences()"
                 class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-xl pulse-button"
                 disabled
+                data-i18n="submitSentences"
               >
                 Soumettre les phrases
               </button>
@@ -1040,6 +1040,7 @@
         <button
           id="success-main-menu-btn"
           onclick="closeSuccessOverlay()"
+          data-i18n="backToMainMenu"
           class="btn-primary-action text-white font-bold py-3 px-8 rounded-lg text-lg"
         >
           Retour au Menu Principal
@@ -1054,13 +1055,13 @@
         <div class="footer-grid">
           <div class="footer-brand-col">
             <p class="font-poppins footer-brand-title">Ijwi ry'Ikirundi AI</p>
-            <p id="footer-description" class="font-inter footer-desc">
+            <p id="footer-description" class="font-inter footer-desc" data-i18n="footerDescription">
               Préserver et faire progresser la langue Kirundi grâce à
               l'intelligence artificielle et à la collaboration communautaire.
             </p>
           </div>
           <div>
-            <p class="footer-col-title" data-translate="footerColProject">Projet</p>
+            <p class="footer-col-title" data-i18n="footerColProject">Projet</p>
             <ul class="footer-links">
               <li><a href="https://github.com/Ijwi-ry-Ikirundi-AI" target="_blank" rel="noopener">GitHub</a></li>
               <li><a href="https://huggingface.co/Ijwi-ry-Ikirundi-AI" target="_blank" rel="noopener">Hugging Face</a></li>
@@ -1068,15 +1069,15 @@
             </ul>
           </div>
           <div>
-            <p class="footer-col-title" data-translate="footerColContribute">Contribuer</p>
+            <p class="footer-col-title" data-i18n="footerColContribute">Contribuer</p>
             <ul class="footer-links">
-              <li><button type="button" class="footer-link-btn" onclick="initEasyMode()" data-translate="footerEasy">Niveau Facile</button></li>
-              <li><button type="button" class="footer-link-btn" onclick="initMediumMode()" data-translate="footerMedium">Niveau Moyen</button></li>
-              <li><button type="button" class="footer-link-btn" onclick="initHardMode()" data-translate="footerHard">Niveau Difficile</button></li>
+              <li><button type="button" class="footer-link-btn" onclick="initEasyMode()" data-i18n="easyLevel">Niveau Facile</button></li>
+              <li><button type="button" class="footer-link-btn" onclick="initMediumMode()" data-i18n="mediumLevel">Niveau Moyen</button></li>
+              <li><button type="button" class="footer-link-btn" onclick="initHardMode()" data-i18n="hardLevel">Niveau Difficile</button></li>
             </ul>
           </div>
           <div>
-            <p class="footer-col-title" data-translate="footerColContact">Contact</p>
+            <p class="footer-col-title" data-i18n="footerColContact">Contact</p>
             <ul class="footer-links">
               <li><a href="https://wa.me/25777568903" target="_blank" rel="noopener">WhatsApp</a></li>
               <li>
@@ -1084,7 +1085,7 @@
                   href="https://chat.whatsapp.com/HLLVvyi5aTM1hyrHIcWn1O?mode=hqrc"
                   target="_blank"
                   rel="noopener"
-                  data-translate="footerWhatsappCommunity"
+                  data-i18n="footerWhatsappCommunity"
                 >Communauté WhatsApp</a>
               </li>
               <li><a href="mailto:cezaremardini10@gmail.com">Email</a></li>
@@ -1093,7 +1094,7 @@
         </div>
         <div class="footer-bottom">
           <p id="powered-by" class="font-inter footer-powered">
-            Propulsé par <span class="footer-powered-em">l'Équipe Ijwi Ry'Ikirundi AI</span>
+            <span data-i18n="poweredBy">Propulsé par</span> <span class="footer-powered-em" data-i18n="poweredByTeam">l'Équipe Ijwi Ry'Ikirundi AI</span>
           </p>
           <p class="footer-meta">
             <span>© <span id="current-year">2026</span></span>
@@ -1106,7 +1107,20 @@
       </div>
     </footer>
 
-    <script src="static/motion.js?v=7"></script>
-    <script src="static/script.js"></script>
+    <script src="static/motion.js?v=8"></script>
+    <script src="static/js/config.js?v=8"></script>
+    <script src="static/js/logger.js?v=8"></script>
+    <script src="static/js/messages.js?v=8"></script>
+    <script src="static/js/storage.js?v=8"></script>
+    <script src="static/js/i18n.js?v=8"></script>
+    <script src="static/js/csv.js?v=8"></script>
+    <script src="static/js/dataset.js?v=8"></script>
+    <script src="static/js/api.js?v=8"></script>
+    <script src="static/js/ui.js?v=8"></script>
+    <script src="static/js/gamification.js?v=8"></script>
+    <script src="static/js/easy.js?v=8"></script>
+    <script src="static/js/medium.js?v=8"></script>
+    <script src="static/js/hard.js?v=8"></script>
+    <script src="static/js/main.js?v=8"></script>
   </body>
 </html>

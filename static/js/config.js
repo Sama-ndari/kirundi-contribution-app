@@ -10,7 +10,8 @@ const CONFIG = Object.freeze({
   /** Relative, so a local run reads the local file instead of the live site. */
   frenchPromptsUrl: "french_prompts.txt",
   easyBatchSize: 20,
-  easyShortestPool: 100,
+  /** Easy mode serves sentences of ≤ 40 characters first, then ≤ 80, ≤ 120, then the rest. */
+  easyLengthBuckets: Object.freeze([40, 80, 120]),
   /** Mirrors the Apps Script limits, so a valid batch is never refused. */
   maxRowsPerRequest: 50,
   maxFieldChars: 500,

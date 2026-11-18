@@ -13,12 +13,39 @@ function shuffle(items) {
   return items;
 }
 
-/** A random batch among the shortest untranslated sentences this browser has not sent yet. */
+/** FNV-1a 32-bit hash → [0, 1): a stable pseudo-random rank for `text` under `seed`. */
+function seededRank(seed, text) {
+  let hash = 0x811c9dc5;
+  for (const char of `${seed}|${text}`) {
+    hash ^= char.codePointAt(0);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash / 2 ** 32;
+}
+
+function lengthBucket(text) {
+  const index = CONFIG.easyLengthBuckets.findIndex((limit) => text.length <= limit);
+  return index === -1 ? CONFIG.easyLengthBuckets.length : index;
+}
+
+/**
+ * The whole list, shorter sentences first (by length bucket), in an order of its own for each
+ * device and day: contributors start at different places, so they rarely translate the same
+ * sentences, and a skipped sentence does not stay on top for ever.
+ */
+function orderForThisDevice(rows) {
+  const seed = `${getClientId()}|${new Date().toISOString().slice(0, 10)}`;
+  return rows
+    .map((row) => ({ row, bucket: lengthBucket(row.kirundi), rank: seededRank(seed, row.kirundi) }))
+    .sort((a, b) => a.bucket - b.bucket || a.rank - b.rank)
+    .map((item) => item.row);
+}
+
+/** The next batch of untranslated sentences this browser has not sent yet. */
 async function loadEasyPhrases() {
   const done = new Set([...getSubmittedKirundi(), ...pendingItems("easy", "original_kirundi")]);
   const available = (await loadPublicRows()).filter((row) => !row.french && !done.has(row.kirundi));
-  shuffle(available).sort((a, b) => a.kirundi.length - b.kirundi.length);
-  return shuffle(available.slice(0, CONFIG.easyShortestPool)).slice(0, CONFIG.easyBatchSize);
+  return orderForThisDevice(available).slice(0, CONFIG.easyBatchSize);
 }
 
 async function initEasyMode() {
